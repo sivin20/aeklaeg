@@ -6,10 +6,11 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Hjem", href: "#hjem" },
-    { label: "Elses Gab", href: "#elses-gab" },
+    { label: "Hjem", href: "/" },
+    { label: "Events", href: "/events" },
+    { label: "Elses Gab", href: "/elses-gab" },
     { label: "Værftet", href: "#vaerftet" },
-    { label: "TØRW", href: "#torw" },
+    { label: "TØRW", href: "/torw" },
     { label: "Kontakt", href: "#kontakt" },
   ];
 
@@ -17,7 +18,7 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <a href="#hjem" className="font-serif text-2xl font-bold text-primary">
+          <a href="/" className="font-serif text-2xl font-bold text-primary">
             Æ Klæg
           </a>
 
