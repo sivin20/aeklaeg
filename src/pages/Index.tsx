@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import EventsHighlight from "@/components/EventsHighlight";
 import Story from "@/components/Story";
 import ElsesGab from "@/components/ElsesGab";
 import Vaerftet from "@/components/Vaerftet";
@@ -13,6 +14,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+        <EventsHighlight />
         <Story />
         <ElsesGab />
         <Vaerftet />
