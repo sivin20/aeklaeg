@@ -56,6 +56,7 @@ const ElsesGabPage = () => {
 
   const [openingHours, setOpeningHours] = useState(defaultOpeningHours);
   const [menu, setMenu] = useState(defaultMenu);
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
   useEffect(() => {
     const savedHours = localStorage.getItem("elsesGabHours");
@@ -187,119 +188,122 @@ const ElsesGabPage = () => {
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
               Menu
             </h2>
+            
+            {/* Category Tabs */}
+            <div className="max-w-6xl mx-auto mb-12">
+              <div className="flex flex-wrap gap-3 justify-center">
+                {menu.categories.map((category, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedCategory(index)}
+                    className={`px-6 py-3 font-sans font-medium text-sm uppercase tracking-wider transition-all rounded-lg ${
+                      selectedCategory === index
+                        ? "bg-primary text-primary-foreground shadow-lg"
+                        : "bg-card text-muted-foreground hover:bg-muted border border-border"
+                    }`}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Selected Category */}
             <div className="max-w-6xl mx-auto">
-              {menu.categories.map((category, categoryIndex) => (
-                <div key={categoryIndex} className="mb-16 last:mb-0">
-                  {isEditing ? (
-                    <Input
-                      value={category.name}
-                      onChange={(e) => {
-                        const newMenu = { ...menu };
-                        newMenu.categories[categoryIndex].name = e.target.value;
-                        setMenu(newMenu);
-                      }}
-                      className="font-serif text-2xl font-bold mb-8 text-foreground uppercase tracking-wider"
-                    />
-                  ) : (
-                    <h3 className="font-serif text-2xl font-bold mb-8 text-foreground uppercase tracking-wider border-b border-border/30 pb-4">
-                      {category.name}
-                    </h3>
-                  )}
-                  <div className="space-y-8">
-                    {category.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="flex gap-6">
-                        {/* Optional Image */}
-                        {(item.image || isEditing) && (
-                          <div className="flex-shrink-0">
-                            {isEditing ? (
-                              <div className="space-y-2">
-                                <Input
-                                  value={item.image}
-                                  onChange={(e) => {
-                                    const newMenu = { ...menu };
-                                    newMenu.categories[categoryIndex].items[itemIndex].image = e.target.value;
-                                    setMenu(newMenu);
-                                  }}
-                                  placeholder="Image URL"
-                                  className="w-32"
-                                />
-                                {item.image && (
-                                  <img
-                                    src={item.image}
-                                    alt={item.name}
-                                    className="w-24 h-24 object-cover rounded-lg"
-                                  />
-                                )}
-                              </div>
-                            ) : item.image ? (
+              <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                {menu.categories[selectedCategory].items.map((item, itemIndex) => (
+                  <div key={itemIndex} className="flex gap-4">
+                    {/* Optional Image */}
+                    {(item.image || isEditing) && (
+                      <div className="flex-shrink-0">
+                        {isEditing ? (
+                          <div className="space-y-2">
+                            <Input
+                              value={item.image}
+                              onChange={(e) => {
+                                const newMenu = { ...menu };
+                                newMenu.categories[selectedCategory].items[itemIndex].image = e.target.value;
+                                setMenu(newMenu);
+                              }}
+                              placeholder="Image URL"
+                              className="w-32"
+                            />
+                            {item.image && (
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="w-24 h-24 object-cover rounded-lg"
+                                className="w-20 h-20 object-cover rounded-lg"
                               />
-                            ) : null}
-                          </div>
-                        )}
-                        
-                        {/* Item Details */}
-                        <div className="flex-1 flex justify-between items-start border-b border-border/20 pb-6">
-                          <div className="flex-1">
-                            {isEditing ? (
-                              <div className="space-y-2">
-                                <Input
-                                  value={item.name}
-                                  onChange={(e) => {
-                                    const newMenu = { ...menu };
-                                    newMenu.categories[categoryIndex].items[itemIndex].name = e.target.value;
-                                    setMenu(newMenu);
-                                  }}
-                                  className="font-sans font-semibold"
-                                />
-                                <Input
-                                  value={item.description}
-                                  onChange={(e) => {
-                                    const newMenu = { ...menu };
-                                    newMenu.categories[categoryIndex].items[itemIndex].description = e.target.value;
-                                    setMenu(newMenu);
-                                  }}
-                                  placeholder="Description"
-                                  className="text-sm"
-                                />
-                              </div>
-                            ) : (
-                              <>
-                                <h4 className="font-sans font-semibold text-foreground text-lg mb-1">
-                                  {item.name}
-                                </h4>
-                                <p className="font-sans text-muted-foreground text-sm italic leading-relaxed">
-                                  {item.description}
-                                </p>
-                              </>
                             )}
                           </div>
-                          <div className="ml-6 flex-shrink-0">
-                            {isEditing ? (
-                              <Input
-                                value={item.price}
-                                onChange={(e) => {
-                                  const newMenu = { ...menu };
-                                  newMenu.categories[categoryIndex].items[itemIndex].price = e.target.value;
-                                  setMenu(newMenu);
-                                }}
-                                className="max-w-[100px]"
-                              />
-                            ) : (
-                              <span className="font-sans text-primary font-medium text-lg">
-                                {item.price}
-                              </span>
-                            )}
-                          </div>
+                        ) : item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-20 h-20 object-cover rounded-lg"
+                          />
+                        ) : null}
+                      </div>
+                    )}
+                    
+                    {/* Item Details */}
+                    <div className="flex-1 border-b border-border/20 pb-6">
+                      <div className="flex justify-between items-start gap-4 mb-2">
+                        <div className="flex-1">
+                          {isEditing ? (
+                            <Input
+                              value={item.name}
+                              onChange={(e) => {
+                                const newMenu = { ...menu };
+                                newMenu.categories[selectedCategory].items[itemIndex].name = e.target.value;
+                                setMenu(newMenu);
+                              }}
+                              className="font-sans font-semibold"
+                            />
+                          ) : (
+                            <h4 className="font-sans font-semibold text-foreground text-lg">
+                              {item.name}
+                            </h4>
+                          )}
+                        </div>
+                        <div className="flex-shrink-0">
+                          {isEditing ? (
+                            <Input
+                              value={item.price}
+                              onChange={(e) => {
+                                const newMenu = { ...menu };
+                                newMenu.categories[selectedCategory].items[itemIndex].price = e.target.value;
+                                setMenu(newMenu);
+                              }}
+                              className="max-w-[100px]"
+                            />
+                          ) : (
+                            <span className="font-sans text-primary font-medium text-lg">
+                              {item.price}
+                            </span>
+                          )}
                         </div>
                       </div>
-                    ))}
+                      {isEditing ? (
+                        <Input
+                          value={item.description}
+                          onChange={(e) => {
+                            const newMenu = { ...menu };
+                            newMenu.categories[selectedCategory].items[itemIndex].description = e.target.value;
+                            setMenu(newMenu);
+                          }}
+                          placeholder="Description"
+                          className="text-sm mt-2"
+                        />
+                      ) : (
+                        <p className="font-sans text-muted-foreground text-sm italic leading-relaxed">
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
