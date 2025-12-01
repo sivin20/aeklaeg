@@ -19,19 +19,38 @@ const ElsesGabPage = () => {
   ];
 
   const defaultMenu = {
-    drinks: [
-      { name: "Kaffe", price: "30 kr" },
-      { name: "Espresso", price: "25 kr" },
-      { name: "Cappuccino", price: "35 kr" },
-      { name: "Latte", price: "35 kr" },
-      { name: "Te", price: "25 kr" },
-    ],
-    food: [
-      { name: "Smørrebrød", price: "65 kr" },
-      { name: "Sandwich", price: "55 kr" },
-      { name: "Salat", price: "70 kr" },
-      { name: "Kage", price: "40 kr" },
-      { name: "Croissant", price: "35 kr" },
+    categories: [
+      {
+        name: "Varme Drikke",
+        items: [
+          { name: "Kaffe", description: "Friskbrygget filteret kaffe", price: "30 kr", image: "" },
+          { name: "Espresso", description: "Dobbelt shot", price: "25 kr", image: "" },
+          { name: "Cappuccino", description: "Espresso med cremet mælkeskum", price: "35 kr", image: "" },
+          { name: "Latte", description: "Espresso med dampet mælk", price: "35 kr", image: "" },
+        ],
+      },
+      {
+        name: "Kolde Drikke",
+        items: [
+          { name: "Te", description: "Udvalg af økologiske teer", price: "25 kr", image: "" },
+          { name: "Friskpresset Juice", description: "Sæsonens frugt", price: "40 kr", image: "" },
+        ],
+      },
+      {
+        name: "Mad",
+        items: [
+          { name: "Smørrebrød", description: "Klassisk dansk smørrebrød med dagens pålæg", price: "65 kr", image: "" },
+          { name: "Sandwich", description: "Hjemmelavet med friske ingredienser", price: "55 kr", image: "" },
+          { name: "Salat", description: "Grøn salat med sæsonens grøntsager", price: "70 kr", image: "" },
+        ],
+      },
+      {
+        name: "Sødt",
+        items: [
+          { name: "Kage", description: "Hjemmebagt dagligt", price: "40 kr", image: "" },
+          { name: "Croissant", description: "Smørbagt croissant", price: "35 kr", image: "" },
+        ],
+      },
     ],
   };
 
@@ -168,92 +187,119 @@ const ElsesGabPage = () => {
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
               Menu
             </h2>
-            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              {/* Drinks */}
-              <div>
-                <h3 className="font-serif text-2xl font-bold mb-6 text-primary">
-                  Drikkevarer
-                </h3>
-                <div className="space-y-4">
-                  {menu.drinks.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center py-3 border-b border-border/20 gap-4"
-                    >
-                      {isEditing ? (
-                        <>
-                          <Input
-                            value={item.name}
-                            onChange={(e) => {
-                              const newMenu = { ...menu };
-                              newMenu.drinks[index].name = e.target.value;
-                              setMenu(newMenu);
-                            }}
-                          />
-                          <Input
-                            value={item.price}
-                            onChange={(e) => {
-                              const newMenu = { ...menu };
-                              newMenu.drinks[index].price = e.target.value;
-                              setMenu(newMenu);
-                            }}
-                            className="max-w-[100px]"
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <span className="font-sans text-foreground">{item.name}</span>
-                          <span className="font-sans text-primary font-medium">
-                            {item.price}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  ))}
+            <div className="max-w-6xl mx-auto">
+              {menu.categories.map((category, categoryIndex) => (
+                <div key={categoryIndex} className="mb-16 last:mb-0">
+                  {isEditing ? (
+                    <Input
+                      value={category.name}
+                      onChange={(e) => {
+                        const newMenu = { ...menu };
+                        newMenu.categories[categoryIndex].name = e.target.value;
+                        setMenu(newMenu);
+                      }}
+                      className="font-serif text-2xl font-bold mb-8 text-foreground uppercase tracking-wider"
+                    />
+                  ) : (
+                    <h3 className="font-serif text-2xl font-bold mb-8 text-foreground uppercase tracking-wider border-b border-border/30 pb-4">
+                      {category.name}
+                    </h3>
+                  )}
+                  <div className="space-y-8">
+                    {category.items.map((item, itemIndex) => (
+                      <div key={itemIndex} className="flex gap-6">
+                        {/* Optional Image */}
+                        {(item.image || isEditing) && (
+                          <div className="flex-shrink-0">
+                            {isEditing ? (
+                              <div className="space-y-2">
+                                <Input
+                                  value={item.image}
+                                  onChange={(e) => {
+                                    const newMenu = { ...menu };
+                                    newMenu.categories[categoryIndex].items[itemIndex].image = e.target.value;
+                                    setMenu(newMenu);
+                                  }}
+                                  placeholder="Image URL"
+                                  className="w-32"
+                                />
+                                {item.image && (
+                                  <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className="w-24 h-24 object-cover rounded-lg"
+                                  />
+                                )}
+                              </div>
+                            ) : item.image ? (
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-24 h-24 object-cover rounded-lg"
+                              />
+                            ) : null}
+                          </div>
+                        )}
+                        
+                        {/* Item Details */}
+                        <div className="flex-1 flex justify-between items-start border-b border-border/20 pb-6">
+                          <div className="flex-1">
+                            {isEditing ? (
+                              <div className="space-y-2">
+                                <Input
+                                  value={item.name}
+                                  onChange={(e) => {
+                                    const newMenu = { ...menu };
+                                    newMenu.categories[categoryIndex].items[itemIndex].name = e.target.value;
+                                    setMenu(newMenu);
+                                  }}
+                                  className="font-sans font-semibold"
+                                />
+                                <Input
+                                  value={item.description}
+                                  onChange={(e) => {
+                                    const newMenu = { ...menu };
+                                    newMenu.categories[categoryIndex].items[itemIndex].description = e.target.value;
+                                    setMenu(newMenu);
+                                  }}
+                                  placeholder="Description"
+                                  className="text-sm"
+                                />
+                              </div>
+                            ) : (
+                              <>
+                                <h4 className="font-sans font-semibold text-foreground text-lg mb-1">
+                                  {item.name}
+                                </h4>
+                                <p className="font-sans text-muted-foreground text-sm italic leading-relaxed">
+                                  {item.description}
+                                </p>
+                              </>
+                            )}
+                          </div>
+                          <div className="ml-6 flex-shrink-0">
+                            {isEditing ? (
+                              <Input
+                                value={item.price}
+                                onChange={(e) => {
+                                  const newMenu = { ...menu };
+                                  newMenu.categories[categoryIndex].items[itemIndex].price = e.target.value;
+                                  setMenu(newMenu);
+                                }}
+                                className="max-w-[100px]"
+                              />
+                            ) : (
+                              <span className="font-sans text-primary font-medium text-lg">
+                                {item.price}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* Food */}
-              <div>
-                <h3 className="font-serif text-2xl font-bold mb-6 text-primary">Mad</h3>
-                <div className="space-y-4">
-                  {menu.food.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center py-3 border-b border-border/20 gap-4"
-                    >
-                      {isEditing ? (
-                        <>
-                          <Input
-                            value={item.name}
-                            onChange={(e) => {
-                              const newMenu = { ...menu };
-                              newMenu.food[index].name = e.target.value;
-                              setMenu(newMenu);
-                            }}
-                          />
-                          <Input
-                            value={item.price}
-                            onChange={(e) => {
-                              const newMenu = { ...menu };
-                              newMenu.food[index].price = e.target.value;
-                              setMenu(newMenu);
-                            }}
-                            className="max-w-[100px]"
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <span className="font-sans text-foreground">{item.name}</span>
-                          <span className="font-sans text-primary font-medium">
-                            {item.price}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
