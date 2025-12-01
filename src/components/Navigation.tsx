@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import LoginDialog from "./LoginDialog";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const { user, logOut } = useAuth();
 
   const navItems = [
     { label: "Hjem", href: "/" },
@@ -33,6 +37,27 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            {user ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => logOut()}
+                className="gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLoginOpen(true)}
+                className="gap-2"
+              >
+                <LogIn className="h-4 w-4" />
+                Admin
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -59,9 +84,31 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            {user ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => logOut()}
+                className="gap-2 mt-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLoginOpen(true)}
+                className="gap-2 mt-2"
+              >
+                <LogIn className="h-4 w-4" />
+                Admin
+              </Button>
+            )}
           </div>
         )}
       </div>
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
     </nav>
   );
 };

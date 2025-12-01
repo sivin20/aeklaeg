@@ -1,16 +1,24 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Clock, Instagram } from "lucide-react";
+import { Clock, Instagram, Edit2, Save, X } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const ElsesGabPage = () => {
-  const openingHours = [
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const [isEditing, setIsEditing] = useState(false);
+  const defaultOpeningHours = [
     { day: "Mandag - Torsdag", hours: "10:00 - 17:00" },
     { day: "Fredag", hours: "10:00 - 18:00" },
     { day: "Lørdag", hours: "10:00 - 16:00" },
     { day: "Søndag", hours: "Lukket" },
   ];
 
-  const menu = {
+  const defaultMenu = {
     drinks: [
       { name: "Kaffe", price: "30 kr" },
       { name: "Espresso", price: "25 kr" },
@@ -25,6 +33,36 @@ const ElsesGabPage = () => {
       { name: "Kage", price: "40 kr" },
       { name: "Croissant", price: "35 kr" },
     ],
+  };
+
+  const [openingHours, setOpeningHours] = useState(defaultOpeningHours);
+  const [menu, setMenu] = useState(defaultMenu);
+
+  useEffect(() => {
+    const savedHours = localStorage.getItem("elsesGabHours");
+    const savedMenu = localStorage.getItem("elsesGabMenu");
+    if (savedHours) setOpeningHours(JSON.parse(savedHours));
+    if (savedMenu) setMenu(JSON.parse(savedMenu));
+  }, []);
+
+  const handleSave = () => {
+    localStorage.setItem("elsesGabHours", JSON.stringify(openingHours));
+    localStorage.setItem("elsesGabMenu", JSON.stringify(menu));
+    setIsEditing(false);
+    toast({
+      title: "Changes saved",
+      description: "Opening hours and menu have been updated.",
+    });
+  };
+
+  const handleCancel = () => {
+    const savedHours = localStorage.getItem("elsesGabHours");
+    const savedMenu = localStorage.getItem("elsesGabMenu");
+    if (savedHours) setOpeningHours(JSON.parse(savedHours));
+    else setOpeningHours(defaultOpeningHours);
+    if (savedMenu) setMenu(JSON.parse(savedMenu));
+    else setMenu(defaultMenu);
+    setIsEditing(false);
   };
 
   return (
@@ -60,17 +98,63 @@ const ElsesGabPage = () => {
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
                   Åbningstider
                 </h2>
+                {user && !isEditing && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsEditing(true)}
+                  >
+                    <Edit2 className="w-5 h-5" />
+                  </Button>
+                )}
               </div>
+              {isEditing && (
+                <div className="flex gap-2 mb-4 justify-center">
+                  <Button onClick={handleSave} size="sm" className="gap-2">
+                    <Save className="w-4 h-4" />
+                    Save
+                  </Button>
+                  <Button onClick={handleCancel} size="sm" variant="outline" className="gap-2">
+                    <X className="w-4 h-4" />
+                    Cancel
+                  </Button>
+                </div>
+              )}
               <div className="space-y-4">
                 {openingHours.map((item, index) => (
                   <div
                     key={index}
-                    className="flex justify-between items-center py-4 border-b border-border/30"
+                    className="flex justify-between items-center py-4 border-b border-border/30 gap-4"
                   >
-                    <span className="font-sans text-lg text-foreground">{item.day}</span>
-                    <span className="font-sans text-lg text-primary font-medium">
-                      {item.hours}
-                    </span>
+                    {isEditing ? (
+                      <>
+                        <Input
+                          value={item.day}
+                          onChange={(e) => {
+                            const newHours = [...openingHours];
+                            newHours[index].day = e.target.value;
+                            setOpeningHours(newHours);
+                          }}
+                          className="max-w-[200px]"
+                        />
+                        <Input
+                          value={item.hours}
+                          onChange={(e) => {
+                            const newHours = [...openingHours];
+                            newHours[index].hours = e.target.value;
+                            setOpeningHours(newHours);
+                          }}
+                          className="max-w-[150px]"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-sans text-lg text-foreground">{item.day}</span>
+                        <span className="font-sans text-lg text-primary font-medium">
+                          {item.hours}
+                        </span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -94,12 +178,36 @@ const ElsesGabPage = () => {
                   {menu.drinks.map((item, index) => (
                     <div
                       key={index}
-                      className="flex justify-between items-center py-3 border-b border-border/20"
+                      className="flex justify-between items-center py-3 border-b border-border/20 gap-4"
                     >
-                      <span className="font-sans text-foreground">{item.name}</span>
-                      <span className="font-sans text-primary font-medium">
-                        {item.price}
-                      </span>
+                      {isEditing ? (
+                        <>
+                          <Input
+                            value={item.name}
+                            onChange={(e) => {
+                              const newMenu = { ...menu };
+                              newMenu.drinks[index].name = e.target.value;
+                              setMenu(newMenu);
+                            }}
+                          />
+                          <Input
+                            value={item.price}
+                            onChange={(e) => {
+                              const newMenu = { ...menu };
+                              newMenu.drinks[index].price = e.target.value;
+                              setMenu(newMenu);
+                            }}
+                            className="max-w-[100px]"
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-sans text-foreground">{item.name}</span>
+                          <span className="font-sans text-primary font-medium">
+                            {item.price}
+                          </span>
+                        </>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -112,12 +220,36 @@ const ElsesGabPage = () => {
                   {menu.food.map((item, index) => (
                     <div
                       key={index}
-                      className="flex justify-between items-center py-3 border-b border-border/20"
+                      className="flex justify-between items-center py-3 border-b border-border/20 gap-4"
                     >
-                      <span className="font-sans text-foreground">{item.name}</span>
-                      <span className="font-sans text-primary font-medium">
-                        {item.price}
-                      </span>
+                      {isEditing ? (
+                        <>
+                          <Input
+                            value={item.name}
+                            onChange={(e) => {
+                              const newMenu = { ...menu };
+                              newMenu.food[index].name = e.target.value;
+                              setMenu(newMenu);
+                            }}
+                          />
+                          <Input
+                            value={item.price}
+                            onChange={(e) => {
+                              const newMenu = { ...menu };
+                              newMenu.food[index].price = e.target.value;
+                              setMenu(newMenu);
+                            }}
+                            className="max-w-[100px]"
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-sans text-foreground">{item.name}</span>
+                          <span className="font-sans text-primary font-medium">
+                            {item.price}
+                          </span>
+                        </>
+                      )}
                     </div>
                   ))}
                 </div>
