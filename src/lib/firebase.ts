@@ -1,14 +1,14 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
-// TODO: Replace with your Firebase config from Firebase Console
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: 'AIzaSyD52-Jdldge_8Wnuh1PuY9IDtl3e-7sCnI',
+  authDomain: 'aeklaeg.firebaseapp.com',
+  projectId: 'aeklaeg',
+  storageBucket: 'aeklaeg.firebasestorage.app',
+  messagingSenderId: '758746279434',
+  appId: '1:758746279434:web:f93633a61e5c26b22e79f3',
+  measurementId: 'G-Y9K07CKWZC',
 };
 
 const app = initializeApp(firebaseConfig);
