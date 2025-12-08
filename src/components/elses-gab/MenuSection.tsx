@@ -7,8 +7,10 @@ import {
   GripVertical,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
+  ChevronDown,
   ImagePlus,
-  Loader2, // Added loader icon
+  Loader2,
   AlertTriangle,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -81,19 +83,21 @@ const defaultMenu: MenuData = {
 // --- Sortable Components (Kept mostly the same) ---
 
 const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: item.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    zIndex: isDragging ? 50 : 10,
+    opacity: isDragging ? 0.9 : 1,
   };
 
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className='w-full flex items-start gap-2 mb-4 bg-background z-10 relative touch-none'
+      className={`w-full flex items-start gap-2 p-3 bg-background rounded-lg border border-transparent ${isEditing ? 'border-border/50 shadow-sm' : ''} ${isDragging ? 'shadow-lg' : ''}`}
     >
       {isEditing && (
         <div
@@ -171,36 +175,41 @@ const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
   );
 };
 
-const SortableSubcategory = ({
+const SubcategorySection = ({
   subcategory,
   isEditing,
   onDelete,
   onUpdateName,
+  onMoveUp,
+  onMoveDown,
+  canMoveUp,
+  canMoveDown,
   children,
 }: any) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: subcategory.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
   return (
     <div
-      ref={setNodeRef}
-      style={style}
       className={`mb-16 transition-all ${isEditing ? 'border border-dashed border-primary/30 p-6 rounded-lg bg-primary/5 relative' : ''}`}
     >
       {isEditing && (
-        <div className='absolute top-4 left-2 flex flex-col gap-2 z-20'>
-          <div
-            {...attributes}
-            {...listeners}
-            className='cursor-grab active:cursor-grabbing p-2 bg-background rounded-md border shadow-sm text-muted-foreground hover:text-primary'
+        <div className='absolute top-4 left-2 flex flex-col gap-1 z-20'>
+          <Button
+            variant='outline'
+            size='icon'
+            onClick={onMoveUp}
+            disabled={!canMoveUp}
+            className='h-8 w-8'
           >
-            <GripVertical className='w-5 h-5' />
-          </div>
+            <ChevronUp className='w-4 h-4' />
+          </Button>
+          <Button
+            variant='outline'
+            size='icon'
+            onClick={onMoveDown}
+            disabled={!canMoveDown}
+            className='h-8 w-8'
+          >
+            <ChevronDown className='w-4 h-4' />
+          </Button>
         </div>
       )}
 
@@ -235,7 +244,7 @@ const SortableSubcategory = ({
         items={subcategory.items.map((i: any) => i.id)}
         strategy={verticalListSortingStrategy}
       >
-        <div className='grid md:grid-cols-2 gap-x-16 gap-y-2'>{children}</div>
+        <div className='flex flex-col gap-4'>{children}</div>
       </SortableContext>
     </div>
   );
@@ -452,6 +461,17 @@ const MenuSection = () => {
     updateLocalMenu(newMenu);
   };
 
+  const moveSubcategory = (subIndex: number, direction: 'up' | 'down') => {
+    if (!localMenu) return;
+    const newMenu = { ...localMenu };
+    const subcategories = newMenu.categories[selectedCategoryIndex].subcategories;
+    const newIndex = direction === 'up' ? subIndex - 1 : subIndex + 1;
+    if (newIndex < 0 || newIndex >= subcategories.length) return;
+    
+    [subcategories[subIndex], subcategories[newIndex]] = [subcategories[newIndex], subcategories[subIndex]];
+    updateLocalMenu(newMenu);
+  };
+
   const updateSubcategoryName = (subId: string, name: string) => {
     if (!localMenu) return;
     const newMenu = { ...localMenu };
@@ -563,16 +583,15 @@ const MenuSection = () => {
     }
   };
 
-  // --- DRAG END HANDLER ---
+  // --- DRAG END HANDLER for Categories ---
   const handleDragEnd = (event: DragEndEvent) => {
     if (!localMenu) return;
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
     const newMenu = { ...localMenu };
-    const currentCat = newMenu.categories[selectedCategoryIndex];
 
-    // 1. Categories
+    // Categories only
     const activeCatIndex = newMenu.categories.findIndex(
       (c) => c.id === active.id,
     );
@@ -586,46 +605,24 @@ const MenuSection = () => {
       );
       updateLocalMenu(newMenu);
       setSelectedCategoryIndex(overCatIndex);
-      return;
     }
+  };
 
-    // 2. Subcategories
-    if (currentCat && currentCat.subcategories) {
-      const activeSubIndex = currentCat.subcategories.findIndex(
-        (s) => s.id === active.id,
-      );
-      const overSubIndex = currentCat.subcategories.findIndex(
-        (s) => s.id === over.id,
-      );
+  // --- DRAG END HANDLER for Items within a specific subcategory ---
+  const handleItemDragEnd = (event: DragEndEvent, subIndex: number) => {
+    if (!localMenu) return;
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
 
-      if (activeSubIndex !== -1 && overSubIndex !== -1) {
-        currentCat.subcategories = arrayMove(
-          currentCat.subcategories,
-          activeSubIndex,
-          overSubIndex,
-        );
-        updateLocalMenu(newMenu);
-        return;
-      }
-    }
+    const newMenu = { ...localMenu };
+    const sub = newMenu.categories[selectedCategoryIndex].subcategories[subIndex];
+    
+    const activeItemIndex = sub.items.findIndex((item) => item.id === active.id);
+    const overItemIndex = sub.items.findIndex((item) => item.id === over.id);
 
-    // 3. Items
-    if (currentCat && currentCat.subcategories) {
-      for (let i = 0; i < currentCat.subcategories.length; i++) {
-        const sub = currentCat.subcategories[i];
-        const activeItemIndex = sub.items.findIndex(
-          (item) => item.id === active.id,
-        );
-        const overItemIndex = sub.items.findIndex(
-          (item) => item.id === over.id,
-        );
-
-        if (activeItemIndex !== -1 && overItemIndex !== -1) {
-          sub.items = arrayMove(sub.items, activeItemIndex, overItemIndex);
-          updateLocalMenu(newMenu);
-          return;
-        }
-      }
+    if (activeItemIndex !== -1 && overItemIndex !== -1) {
+      sub.items = arrayMove(sub.items, activeItemIndex, overItemIndex);
+      updateLocalMenu(newMenu);
     }
   };
 
@@ -738,53 +735,60 @@ const MenuSection = () => {
 
           {/* Subcategories & Items Content */}
           <div className='max-w-5xl mx-auto space-y-20'>
-            {currentCategoryData && (
-              <SortableContext
-                items={(currentCategoryData.subcategories || []).map(
-                  (s) => s.id,
-                )}
-                strategy={verticalListSortingStrategy}
-              >
-                {(currentCategoryData.subcategories || []).map(
-                  (subcategory, subIndex) => (
-                    <SortableSubcategory
-                      key={subcategory.id}
-                      subcategory={subcategory}
-                      isEditing={isEditing}
-                      onUpdateName={(val: string) =>
-                        updateSubcategoryName(subcategory.id, val)
-                      }
-                      onDelete={() => removeSubcategory(subcategory.id)}
+            {currentCategoryData &&
+              (currentCategoryData.subcategories || []).map(
+                (subcategory, subIndex) => (
+                  <SubcategorySection
+                    key={subcategory.id}
+                    subcategory={subcategory}
+                    isEditing={isEditing}
+                    onUpdateName={(val: string) =>
+                      updateSubcategoryName(subcategory.id, val)
+                    }
+                    onDelete={() => removeSubcategory(subcategory.id)}
+                    onMoveUp={() => moveSubcategory(subIndex, 'up')}
+                    onMoveDown={() => moveSubcategory(subIndex, 'down')}
+                    canMoveUp={subIndex > 0}
+                    canMoveDown={subIndex < (currentCategoryData.subcategories?.length || 0) - 1}
+                  >
+                    <DndContext
+                      sensors={sensors}
+                      collisionDetection={closestCenter}
+                      onDragEnd={(event) => handleItemDragEnd(event, subIndex)}
                     >
-                      {subcategory.items.map((item, itemIndex) => (
-                        <SortableItemRow
-                          key={item.id}
-                          item={item}
-                          isEditing={isEditing}
-                          onUpdate={(field: keyof MenuItem, val: string) =>
-                            updateItem(subIndex, item.id, field, val)
-                          }
-                          onDelete={() => removeItem(subIndex, item.id)}
-                        />
-                      ))}
+                      <SortableContext
+                        items={subcategory.items.map((i) => i.id)}
+                        strategy={verticalListSortingStrategy}
+                      >
+                        {subcategory.items.map((item) => (
+                          <SortableItemRow
+                            key={item.id}
+                            item={item}
+                            isEditing={isEditing}
+                            onUpdate={(field: keyof MenuItem, val: string) =>
+                              updateItem(subIndex, item.id, field, val)
+                            }
+                            onDelete={() => removeItem(subIndex, item.id)}
+                          />
+                        ))}
+                      </SortableContext>
+                    </DndContext>
 
-                      {isEditing && (
-                        <div className='col-span-full mt-4 flex justify-center'>
-                          <Button
-                            variant='outline'
-                            size='sm'
-                            onClick={() => addItem(subIndex)}
-                            className='gap-2 border-dashed'
-                          >
-                            <Plus className='w-4 h-4' /> Tilføj vare
-                          </Button>
-                        </div>
-                      )}
-                    </SortableSubcategory>
-                  ),
-                )}
-              </SortableContext>
-            )}
+                    {isEditing && (
+                      <div className='mt-4 flex justify-center'>
+                        <Button
+                          variant='outline'
+                          size='sm'
+                          onClick={() => addItem(subIndex)}
+                          className='gap-2 border-dashed'
+                        >
+                          <Plus className='w-4 h-4' /> Tilføj vare
+                        </Button>
+                      </div>
+                    )}
+                  </SubcategorySection>
+                ),
+              )}
 
             {isEditing && (
               <Button
