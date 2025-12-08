@@ -45,7 +45,9 @@
     "@radix-ui/react-tooltip": "1.2.7",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tanstack/react-query": "5.83.0",
-    "@vitejs/plugin-react": "^5.1.1",
+    "@vercel/node": "2.3.0",
+    "@vercel/static-build": "1.2.1",
+    "@vitejs/plugin-react": "5.1.1",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cmdk": "1.1.1",
@@ -67,8 +69,9 @@
     "sonner": "1.7.4",
     "tailwind-merge": "2.6.0",
     "tailwindcss-animate": "1.0.7",
+    "tsx": "4.21.0",
     "vaul": "0.9.9",
-    "vercel": "^48.11.0",
+    "vercel": "49.1.2",
     "zod": "3.25.76"
   },
   "devDependencies": {
@@ -89,6 +92,6 @@
     "tailwindcss": "3.4.17",
     "typescript": "5.8.3",
     "typescript-eslint": "8.38.0",
-    "vite": "5.4.19"
+    "vite": "7.2.7"
   }
 }
