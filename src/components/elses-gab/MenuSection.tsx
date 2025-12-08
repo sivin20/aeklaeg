@@ -244,7 +244,7 @@ const SubcategorySection = ({
         items={subcategory.items.map((i: any) => i.id)}
         strategy={verticalListSortingStrategy}
       >
-        <div className='flex flex-col gap-4'>{children}</div>
+        <div className={`grid gap-4 ${isEditing ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 md:gap-x-16'}`}>{children}</div>
       </SortableContext>
     </div>
   );
