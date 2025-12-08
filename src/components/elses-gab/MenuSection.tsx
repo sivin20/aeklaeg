@@ -83,8 +83,14 @@ const defaultMenu: MenuData = {
 // --- Sortable Components (Kept mostly the same) ---
 
 const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: item.id });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: item.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -121,7 +127,7 @@ const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
                 className='font-serif font-bold uppercase tracking-wider'
               />
             ) : (
-              <h4 className='font-serif font-bold text-lg uppercase tracking-wider text-foreground truncate'>
+              <h4 className='font-serif font-bold text-lg uppercase tracking-wider text-foreground'>
                 {item.name}
               </h4>
             )}
@@ -244,7 +250,11 @@ const SubcategorySection = ({
         items={subcategory.items.map((i: any) => i.id)}
         strategy={verticalListSortingStrategy}
       >
-        <div className={`grid gap-4 ${isEditing ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 md:gap-x-16'}`}>{children}</div>
+        <div
+          className={`grid gap-4 ${isEditing ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 md:gap-x-16'}`}
+        >
+          {children}
+        </div>
       </SortableContext>
     </div>
   );
@@ -464,11 +474,15 @@ const MenuSection = () => {
   const moveSubcategory = (subIndex: number, direction: 'up' | 'down') => {
     if (!localMenu) return;
     const newMenu = { ...localMenu };
-    const subcategories = newMenu.categories[selectedCategoryIndex].subcategories;
+    const subcategories =
+      newMenu.categories[selectedCategoryIndex].subcategories;
     const newIndex = direction === 'up' ? subIndex - 1 : subIndex + 1;
     if (newIndex < 0 || newIndex >= subcategories.length) return;
-    
-    [subcategories[subIndex], subcategories[newIndex]] = [subcategories[newIndex], subcategories[subIndex]];
+
+    [subcategories[subIndex], subcategories[newIndex]] = [
+      subcategories[newIndex],
+      subcategories[subIndex],
+    ];
     updateLocalMenu(newMenu);
   };
 
@@ -615,9 +629,12 @@ const MenuSection = () => {
     if (!over || active.id === over.id) return;
 
     const newMenu = { ...localMenu };
-    const sub = newMenu.categories[selectedCategoryIndex].subcategories[subIndex];
-    
-    const activeItemIndex = sub.items.findIndex((item) => item.id === active.id);
+    const sub =
+      newMenu.categories[selectedCategoryIndex].subcategories[subIndex];
+
+    const activeItemIndex = sub.items.findIndex(
+      (item) => item.id === active.id,
+    );
     const overItemIndex = sub.items.findIndex((item) => item.id === over.id);
 
     if (activeItemIndex !== -1 && overItemIndex !== -1) {
@@ -749,7 +766,10 @@ const MenuSection = () => {
                     onMoveUp={() => moveSubcategory(subIndex, 'up')}
                     onMoveDown={() => moveSubcategory(subIndex, 'down')}
                     canMoveUp={subIndex > 0}
-                    canMoveDown={subIndex < (currentCategoryData.subcategories?.length || 0) - 1}
+                    canMoveDown={
+                      subIndex <
+                      (currentCategoryData.subcategories?.length || 0) - 1
+                    }
                   >
                     <DndContext
                       sensors={sensors}

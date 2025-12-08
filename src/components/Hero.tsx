@@ -27,7 +27,7 @@ const Hero = () => {
             Havnevej 2
           </p>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
-            <a href='#'>
+            <a href='/vaerftet'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>
                   Cocktailbaren Værftet

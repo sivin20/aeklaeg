@@ -11,9 +11,9 @@ const Navigation = () => {
     { label: 'Hjem', href: '/' },
     { label: 'Events', href: '/events' },
     { label: 'Elses Gab', href: '/elses-gab' },
-    { label: 'Værftet', href: '#vaerftet' },
+    { label: 'Værftet', href: '/vaerftet' },
     { label: 'TØRW', href: '/torw' },
-    { label: 'Kontakt', href: '#kontakt' },
+    { label: 'Kontakt', href: '/#kontakt' },
   ];
 
   return (

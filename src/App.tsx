@@ -10,6 +10,7 @@ import ElsesGabPage from './pages/ElsesGabPage';
 import TorwPage from './pages/TorwPage';
 import EventsPage from './pages/EventsPage';
 import EventPage from '@/pages/EventPage.tsx';
+import VaerftetPage from '@/pages/VaerftetPage.tsx';
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path='/torw' element={<TorwPage />} />
             <Route path='/events' element={<EventsPage />} />
             <Route path='/events/:id' element={<EventPage />} />
+            <Route path='/vaerftet' element={<VaerftetPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path='*' element={<NotFound />} />
           </Routes>
