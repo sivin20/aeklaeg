@@ -31,9 +31,11 @@ const AboutSection = () => {
             </div>
 
             <div className='mt-10'>
-              <button className='bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-bold py-3 px-8 rounded-md uppercase tracking-wider text-sm md:text-base shadow-sm'>
-                Se Barkort
-              </button>
+              <a href='#bar-card'>
+                <button className='bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-bold py-3 px-8 rounded-md uppercase tracking-wider text-sm md:text-base shadow-sm'>
+                  Se Barkort
+                </button>
+              </a>
             </div>
           </div>
 
