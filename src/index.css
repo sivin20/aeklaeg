@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'JMH Typewriter';
+    /* Make sure this path matches where you put the file */
+    src: url('./fonts/JMH Typewriter.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

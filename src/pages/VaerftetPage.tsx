@@ -47,10 +47,10 @@ const VaerftetPage = () => {
 
           {/* --- TEXT CONTENT --- */}
           <div className='relative z-20 text-center px-4'>
-            <h1 className='font-serif text-5xl md:text-8xl font-bold mb-6 text-white drop-shadow-lg'>
+            <h1 className='font-typewriter text-4xl md:text-7xl text-white drop-shadow-lg'>
               Velkommen til
             </h1>
-            <h1 className='font-serif text-5xl md:text-8xl font-bold mb-6 text-white drop-shadow-lg'>
+            <h1 className='font-typewriter text-4xl md:text-7xl mb-6 text-white drop-shadow-lg'>
               Værftet
             </h1>
             <div className='flex gap-4 items-center justify-center w-full max-w-md mx-auto'>

@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
-        <h1 className='font-serif text-6xl md:text-8xl font-bold mb-6 text-primary'>
+        <h1 className='font-typewriter text-5xl md:text-8xl font-bold mb-6 text-primary'>
           Æ Klæg
         </h1>
         <p className='font-serif text-2xl md:text-4xl mb-4 text-foreground'>
