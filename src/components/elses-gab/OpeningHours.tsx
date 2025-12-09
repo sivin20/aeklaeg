@@ -23,7 +23,8 @@ const OpeningHours = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
-  const [openingHours, setOpeningHours] = useState<OpeningHourItem[]>(defaultOpeningHours);
+  const [openingHours, setOpeningHours] =
+    useState<OpeningHourItem[]>(defaultOpeningHours);
 
   useEffect(() => {
     const savedHours = localStorage.getItem(STORAGE_KEY);
@@ -47,7 +48,10 @@ const OpeningHours = () => {
   };
 
   const addHourRow = () => {
-    setOpeningHours([...openingHours, { day: 'Ny dag', hours: '00:00 - 00:00' }]);
+    setOpeningHours([
+      ...openingHours,
+      { day: 'Ny dag', hours: '00:00 - 00:00' },
+    ]);
   };
 
   const removeHourRow = (index: number) => {
@@ -62,76 +66,78 @@ const OpeningHours = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-3 mb-8 justify-center">
-            <Clock className="w-8 h-8 text-primary" />
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+    <section className='py-16 md:py-24 bg-card' id='opening-hours'>
+      <div className='container mx-auto px-4'>
+        <div className='max-w-3xl mx-auto'>
+          <div className='flex items-center gap-3 mb-8 justify-center'>
+            <Clock className='w-8 h-8 text-primary' />
+            <h2 className='font-serif text-3xl md:text-4xl font-bold text-foreground'>
               Åbningstider
             </h2>
             {user && !isEditing && (
               <Button
-                variant="ghost"
-                size="icon"
+                variant='ghost'
+                size='icon'
                 onClick={() => setIsEditing(true)}
               >
-                <Edit2 className="w-5 h-5" />
+                <Edit2 className='w-5 h-5' />
               </Button>
             )}
           </div>
 
           {isEditing && (
-            <div className="flex gap-2 mb-4 justify-center">
-              <Button onClick={handleSave} size="sm" className="gap-2">
-                <Save className="w-4 h-4" />
+            <div className='flex gap-2 mb-4 justify-center'>
+              <Button onClick={handleSave} size='sm' className='gap-2'>
+                <Save className='w-4 h-4' />
                 Gem
               </Button>
               <Button
                 onClick={handleCancel}
-                size="sm"
-                variant="outline"
-                className="gap-2"
+                size='sm'
+                variant='outline'
+                className='gap-2'
               >
-                <X className="w-4 h-4" />
+                <X className='w-4 h-4' />
                 Annuller
               </Button>
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className='space-y-4'>
             {openingHours.map((item, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center py-4 border-b border-border/30 gap-4"
+                className='flex justify-between items-center py-4 border-b border-border/30 gap-4'
               >
                 {isEditing ? (
                   <>
                     <Input
                       value={item.day}
                       onChange={(e) => updateHour(index, 'day', e.target.value)}
-                      className="max-w-[200px]"
+                      className='max-w-[200px]'
                     />
                     <Input
                       value={item.hours}
-                      onChange={(e) => updateHour(index, 'hours', e.target.value)}
-                      className="max-w-[150px]"
+                      onChange={(e) =>
+                        updateHour(index, 'hours', e.target.value)
+                      }
+                      className='max-w-[150px]'
                     />
                     <Button
-                      variant="ghost"
-                      size="icon"
+                      variant='ghost'
+                      size='icon'
                       onClick={() => removeHourRow(index)}
-                      className="text-destructive hover:text-destructive"
+                      className='text-destructive hover:text-destructive'
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className='w-4 h-4' />
                     </Button>
                   </>
                 ) : (
                   <>
-                    <span className="font-sans text-lg text-foreground">
+                    <span className='font-sans text-lg text-foreground'>
                       {item.day}
                     </span>
-                    <span className="font-sans text-lg text-primary font-medium">
+                    <span className='font-sans text-lg text-primary font-medium'>
                       {item.hours}
                     </span>
                   </>
@@ -142,11 +148,11 @@ const OpeningHours = () => {
 
           {isEditing && (
             <Button
-              variant="outline"
+              variant='outline'
               onClick={addHourRow}
-              className="mt-4 w-full gap-2"
+              className='mt-4 w-full gap-2'
             >
-              <Plus className="w-4 h-4" />
+              <Plus className='w-4 h-4' />
               Tilføj række
             </Button>
           )}

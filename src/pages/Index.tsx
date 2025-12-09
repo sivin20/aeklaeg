@@ -1,16 +1,16 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import EventsHighlight from "@/components/EventsHighlight";
-import Story from "@/components/Story";
-import ElsesGab from "@/components/ElsesGab";
-import Vaerftet from "@/components/Vaerftet";
-import TORW from "@/components/TORW";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Navigation from '@/components/Navigation';
+import Hero from '@/components/home/Hero.tsx';
+import EventsHighlight from '@/components/home/EventsHighlight.tsx';
+import Story from '@/components/home/Story.tsx';
+import ElsesGab from '@/components/home/ElsesGab.tsx';
+import Vaerftet from '@/components/home/Vaerftet.tsx';
+import TORW from '@/components/home/TORW.tsx';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className='min-h-screen bg-background text-foreground'>
       <Navigation />
       <main>
         <Hero />

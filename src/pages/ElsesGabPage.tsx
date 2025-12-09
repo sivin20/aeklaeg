@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import { Instagram } from 'lucide-react';
 import OpeningHours from '@/components/elses-gab/OpeningHours';
 import MenuSection from '@/components/elses-gab/MenuSection';
-import EventSpaceSection from '@/components/EventSpaceSection.tsx';
+import EventSpaceSection from '@/components/elses-gab/EventSpaceSection.tsx';
 import InstagramFeed from '@/components/elses-gab/InstagramFeed.tsx';
 
 const ElsesGabPage = () => {
