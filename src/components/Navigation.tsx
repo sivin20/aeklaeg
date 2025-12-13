@@ -9,7 +9,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: 'Hjem', href: '/' },
-    { label: 'Events', href: '/events' },
+    { label: 'Kædekassen', href: '/kaedekassen' },
     { label: 'Elses Gab', href: '/elses-gab' },
     { label: 'Værftet', href: '/vaerftet' },
     { label: 'TØRW', href: '/torw' },

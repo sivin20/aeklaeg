@@ -47,7 +47,7 @@ export async function getPreviousEvents(limit = 20) {
     .filter((event: BillettoEvent) => !!event.published_at)
     .sort(
       (a: BillettoEvent, b: BillettoEvent) =>
-        new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime(),
+        new Date(b.starts_at).getTime() - new Date(a.starts_at).getTime(),
     )
     .slice(0, limit);
 }

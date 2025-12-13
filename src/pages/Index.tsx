@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/home/Hero.tsx';
-import EventsHighlight from '@/components/home/EventsHighlight.tsx';
+import KaedekassenSection from '@/components/home/KaedekassenSection.tsx';
 import Story from '@/components/home/Story.tsx';
 import ElsesGab from '@/components/home/ElsesGab.tsx';
 import Vaerftet from '@/components/home/Vaerftet.tsx';
@@ -14,7 +14,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <EventsHighlight />
+        <KaedekassenSection />
         <Story />
         <ElsesGab />
         <Vaerftet />

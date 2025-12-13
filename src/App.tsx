@@ -8,7 +8,7 @@ import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 import ElsesGabPage from './pages/ElsesGabPage';
 import TorwPage from './pages/TorwPage';
-import EventsPage from './pages/EventsPage';
+import KaedekassenPage from './pages/KaedekassenPage.tsx';
 import EventPage from '@/pages/EventPage.tsx';
 import VaerftetPage from '@/pages/VaerftetPage.tsx';
 
@@ -25,8 +25,8 @@ const App = () => (
             <Route path='/' element={<Index />} />
             <Route path='/elses-gab' element={<ElsesGabPage />} />
             <Route path='/torw' element={<TorwPage />} />
-            <Route path='/events' element={<EventsPage />} />
-            <Route path='/events/:id' element={<EventPage />} />
+            <Route path='/kaedekassen' element={<KaedekassenPage />} />
+            <Route path='/kaedekassen/:id' element={<EventPage />} />
             <Route path='/vaerftet' element={<VaerftetPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path='*' element={<NotFound />} />

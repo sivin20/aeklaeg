@@ -7,7 +7,7 @@ import {
   getTicketTypesForAccount,
 } from '@/services/billetto.service.ts';
 
-const EventsHighlight = () => {
+const KaedekassenSection = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<BillettoEvent[]>([]);
   const [ticketTypes, setTicketTypes] = useState<BillettoTicketType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -59,17 +59,17 @@ const EventsHighlight = () => {
           <div className='flex items-center justify-center gap-3 mb-6'>
             <Calendar className='w-10 h-10 text-primary' />
             <h2 className='font-serif text-4xl md:text-6xl font-bold text-foreground'>
-              Kommende Events
+              Kædekassen
             </h2>
           </div>
           <p className='font-sans text-xl text-muted-foreground max-w-2xl mx-auto'>
-            Oplev musik, kunst og kultur i vores unikke venues
+            Oplev den bedste musik, altid fuldstændigt intimt og tæt på
           </p>
         </div>
 
         <div className='grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12'>
           {finalEvents.map((ev) => (
-            <a href={`events/${ev.id}`} key={ev.id}>
+            <a href={`/kaedekassen/${ev.id}`} key={ev.id}>
               <div
                 key={ev.id}
                 className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500'
@@ -115,7 +115,7 @@ const EventsHighlight = () => {
         </div>
 
         <div className='text-center'>
-          <a href='/events'>
+          <a href='/kaedekassen'>
             <Button
               size='lg'
               className='bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-lg px-8'
@@ -130,4 +130,4 @@ const EventsHighlight = () => {
   );
 };
 
-export default EventsHighlight;
+export default KaedekassenSection;

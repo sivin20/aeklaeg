@@ -8,7 +8,7 @@ import {
   getUpcomingEvents,
 } from '@/services/billetto.service.ts';
 
-const EventsPage = () => {
+const KaedekassenPage = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<BillettoEvent[]>([]);
   const [previousEvents, setPreviousEvents] = useState<BillettoEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,7 @@ const EventsPage = () => {
           </div>
           <div className='relative z-10 text-center px-4'>
             <h1 className='font-serif text-5xl md:text-7xl font-bold mb-4 text-primary'>
-              Kædekassen / Events
+              Kædekassen
             </h1>
             <p className='font-sans text-xl text-muted-foreground'>
               Oplevelser, Musik & Kunst
@@ -159,4 +159,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default KaedekassenPage;
