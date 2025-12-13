@@ -41,4 +41,12 @@ export interface BillettoEvent {
   venue?: string;
   location?: string;
   organization?: string;
+  ticket_types?: BillettoTicketType[];
+}
+
+export interface BillettoTicketType {
+  id: string;
+  price: number; // in cents
+  event: string; // event ID
+  type: 'AddonTicketType' | 'PayTicketType';
 }

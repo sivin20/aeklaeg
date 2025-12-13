@@ -1,17 +1,47 @@
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
 import { useEffect, useState } from 'react';
-import { BillettoEvent } from '@/types/billetto.ts';
-import { getUpcomingEvents } from '@/services/billetto.service.ts';
+import { BillettoEvent, BillettoTicketType } from '@/types/billetto.ts';
+import {
+  getUpcomingEvents,
+  getTicketTypesForAccount,
+} from '@/services/billetto.service.ts';
 
 const EventsHighlight = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<BillettoEvent[]>([]);
+  const [ticketTypes, setTicketTypes] = useState<BillettoTicketType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [finalEvents, setFinalEvents] = useState<BillettoEvent[]>([]);
+
+  useEffect(() => {
+    async function loadTicketTypes() {
+      try {
+        const ticketTypes = await getTicketTypesForAccount();
+        setTicketTypes(ticketTypes);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadTicketTypes();
+  }, []);
+
+  useEffect(() => {
+    setFinalEvents(
+      upcomingEvents.map((event) => {
+        const eventTicketTypes = ticketTypes.filter(
+          (tt) => tt.event === event.id,
+        );
+        console.log('Event ticket types:', eventTicketTypes);
+        return { ...event, ticket_types: eventTicketTypes };
+      }),
+    );
+  }, [upcomingEvents, ticketTypes]);
 
   useEffect(() => {
     async function loadEvents() {
       try {
         const events = await getUpcomingEvents(3); // Fetch top 3 upcoming events
+        console.log('Upcoming events fetched:', events);
         setUpcomingEvents(events);
       } finally {
         setLoading(false);
@@ -38,8 +68,8 @@ const EventsHighlight = () => {
         </div>
 
         <div className='grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12'>
-          {upcomingEvents.map((ev) => (
-            <a href={`events/${ev.id}`}>
+          {finalEvents.map((ev) => (
+            <a href={`events/${ev.id}`} key={ev.id}>
               <div
                 key={ev.id}
                 className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500'
@@ -58,14 +88,25 @@ const EventsHighlight = () => {
                     <h3 className='font-serif text-2xl font-bold mb-2 text-primary'>
                       {ev.name}
                     </h3>
-                    <p className='font-sans text-muted-foreground mb-1'>
-                      {new Date(ev.starts_at).toLocaleDateString('da-DK')}
-                    </p>
-                    {ev.location && (
-                      <p className='font-sans text-sm text-muted-foreground'>
-                        {ev.location}
+                    <div className='flex items-center justify-between gap-3'>
+                      <p className='font-sans text-muted-foreground'>
+                        {new Date(ev.starts_at).toLocaleDateString('da-DK')}
                       </p>
-                    )}
+                      {ev.ticket_types &&
+                        ev.ticket_types
+                          .filter(
+                            (tt) => tt.type === 'PayTicketType' && !!tt.price,
+                          )
+                          .map((ticketType) => (
+                            <a href={ev.public_url} key={ticketType.id}>
+                              <Button>
+                                <div className='font-sans text-sm'>
+                                  {`${(ticketType.price / 100).toFixed(0)} DKK`}
+                                </div>
+                              </Button>
+                            </a>
+                          ))}
+                    </div>
                   </div>
                 </div>
               </div>
