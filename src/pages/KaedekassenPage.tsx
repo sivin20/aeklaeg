@@ -100,19 +100,6 @@ const KaedekassenPage = () => {
                       </div>
                     </div>
                   </a>
-                  <div className='flex justify-center py-4'>
-                    <a
-                      href={`events/${ev.id}`}
-                      className='flex items-center justify-end'
-                    >
-                      <Button
-                        size='lg'
-                        className='bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-lg px-8'
-                      >
-                        Læs mere
-                      </Button>
-                    </a>
-                  </div>
                 </div>
               ))}
             </div>
