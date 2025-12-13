@@ -39,16 +39,16 @@ const Hero = () => {
                 <p className='font-sans text-foreground'>Caféen Elses Gab</p>
               </div>
             </a>
+            <a href='/kaedekassen'>
+              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
+                <p className='font-sans text-foreground'>
+                  Spillestedet Kædekassen
+                </p>
+              </div>
+            </a>
             <a href='/torw'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>Tøjbutikken TØRW</p>
-              </div>
-            </a>
-            <a href='#'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
-                <p className='font-sans text-foreground'>
-                  Galleri & Udstillinger
-                </p>
               </div>
             </a>
           </div>
