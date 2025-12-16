@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
   return (
     <section
@@ -27,30 +29,30 @@ const Hero = () => {
             Havnevej 2
           </p>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
-            <a href='/vaerftet'>
+            <Link to='/vaerftet'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>
                   Cocktailbaren Værftet
                 </p>
               </div>
-            </a>
-            <a href='/elses-gab'>
+            </Link>
+            <Link to='/elses-gab'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>Caféen Elses Gab</p>
               </div>
-            </a>
-            <a href='/kaedekassen'>
+            </Link>
+            <Link to='/kaedekassen'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>
                   Spillestedet Kædekassen
                 </p>
               </div>
-            </a>
-            <a href='/torw'>
+            </Link>
+            <Link to='/torw'>
               <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
                 <p className='font-sans text-foreground'>Tøjbutikken TØRW</p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

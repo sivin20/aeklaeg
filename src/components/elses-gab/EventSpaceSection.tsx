@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button.tsx';
+import { Link } from 'react-router-dom';
 
 const EventSpaceSection = () => {
   const capacities = [
@@ -84,9 +85,9 @@ const EventSpaceSection = () => {
               ))}
             </ul>
             <div className='mt-4'>
-              <a href='/#kontakt'>
+              <Link to='/#kontakt'>
                 <Button>Kontakt os</Button>
-              </a>
+              </Link>
             </div>
           </div>
 
