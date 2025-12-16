@@ -2,15 +2,13 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
 import { useEffect, useState } from 'react';
 import { BillettoEvent, BillettoTicketType } from '@/types/billetto.ts';
-import {
-  getUpcomingEvents,
-  getTicketTypesForAccount,
-} from '@/services/billetto.service.ts';
+import { getTicketTypesForAccount } from '@/services/billetto.service.ts';
+import { useEvents } from '@/contexts/EventsContext';
 
 const KaedekassenSection = () => {
-  const [upcomingEvents, setUpcomingEvents] = useState<BillettoEvent[]>([]);
+  const { upcomingEvents, isLoading: eventsLoading } = useEvents();
   const [ticketTypes, setTicketTypes] = useState<BillettoTicketType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [ticketTypesLoading, setTicketTypesLoading] = useState(true);
   const [finalEvents, setFinalEvents] = useState<BillettoEvent[]>([]);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ const KaedekassenSection = () => {
         const ticketTypes = await getTicketTypesForAccount();
         setTicketTypes(ticketTypes);
       } finally {
-        setLoading(false);
+        setTicketTypesLoading(false);
       }
     }
     loadTicketTypes();
@@ -27,30 +25,18 @@ const KaedekassenSection = () => {
 
   useEffect(() => {
     setFinalEvents(
-      upcomingEvents.map((event) => {
+      upcomingEvents.slice(0, 3).map((event) => {
         const eventTicketTypes = ticketTypes.filter(
           (tt) => tt.event === event.id,
         );
-        console.log('Event ticket types:', eventTicketTypes);
         return { ...event, ticket_types: eventTicketTypes };
       }),
     );
   }, [upcomingEvents, ticketTypes]);
 
-  useEffect(() => {
-    async function loadEvents() {
-      try {
-        const events = await getUpcomingEvents(3); // Fetch top 3 upcoming events
-        console.log('Upcoming events fetched:', events);
-        setUpcomingEvents(events);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadEvents();
-  }, []);
+  const loading = eventsLoading || ticketTypesLoading;
 
-  if (loading) return <p>Loading events...</p>;
+  if (loading) return <p className='text-center py-20'>Loading events...</p>;
 
   return (
     <section id='events' className='py-20 md:py-32 bg-card'>
