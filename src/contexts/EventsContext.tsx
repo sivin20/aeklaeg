@@ -1,12 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import type { BillettoEvent } from '@/types/billetto';
+import type { BillettoEvent, BillettoTicketType } from '@/types/billetto';
+
+export interface EventWithTickets extends BillettoEvent {
+  ticket_types?: BillettoTicketType[];
+}
 
 interface EventsContextType {
-  upcomingEvents: BillettoEvent[];
-  previousEvents: BillettoEvent[];
+  upcomingEvents: EventWithTickets[];
+  previousEvents: EventWithTickets[];
   isLoading: boolean;
   error: string | null;
-  getEventById: (id: string) => BillettoEvent | undefined;
+  getEventById: (id: string) => EventWithTickets | undefined;
   refetch: () => Promise<void>;
 }
 
@@ -51,9 +55,32 @@ async function fetchPreviousEvents(limit = 30): Promise<BillettoEvent[]> {
     );
 }
 
+async function fetchTicketTypes(limit = 50): Promise<BillettoTicketType[]> {
+  const res = await fetch(
+    `/api/billetto?endpoint=organiser/ticket_types&limit=${limit}`,
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch ticket types');
+  }
+
+  const json = await res.json();
+  return json.data ?? [];
+}
+
+function attachTicketTypesToEvents(
+  events: BillettoEvent[],
+  ticketTypes: BillettoTicketType[]
+): EventWithTickets[] {
+  return events.map((event) => ({
+    ...event,
+    ticket_types: ticketTypes.filter((tt) => tt.event === event.id),
+  }));
+}
+
 export function EventsProvider({ children }: { children: React.ReactNode }) {
-  const [upcomingEvents, setUpcomingEvents] = useState<BillettoEvent[]>([]);
-  const [previousEvents, setPreviousEvents] = useState<BillettoEvent[]>([]);
+  const [upcomingEvents, setUpcomingEvents] = useState<EventWithTickets[]>([]);
+  const [previousEvents, setPreviousEvents] = useState<EventWithTickets[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,13 +89,14 @@ export function EventsProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     
     try {
-      const [upcoming, previous] = await Promise.all([
+      const [upcoming, previous, ticketTypes] = await Promise.all([
         fetchUpcomingEvents(20),
         fetchPreviousEvents(30),
+        fetchTicketTypes(50),
       ]);
       
-      setUpcomingEvents(upcoming);
-      setPreviousEvents(previous);
+      setUpcomingEvents(attachTicketTypesToEvents(upcoming, ticketTypes));
+      setPreviousEvents(attachTicketTypesToEvents(previous, ticketTypes));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch events');
     } finally {
@@ -80,7 +108,7 @@ export function EventsProvider({ children }: { children: React.ReactNode }) {
     fetchAllEvents();
   }, []);
 
-  const getEventById = (id: string): BillettoEvent | undefined => {
+  const getEventById = (id: string): EventWithTickets | undefined => {
     return (
       upcomingEvents.find((e) => e.id === id) ||
       previousEvents.find((e) => e.id === id)
