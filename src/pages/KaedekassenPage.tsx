@@ -76,7 +76,11 @@ const KaedekassenPage = () => {
                     {ev.name}
                   </h3>
                   <p className='text-sm text-muted-foreground'>
-                    {new Date(ev.starts_at).toLocaleDateString('da-DK')}
+                    {new Date(ev.starts_at).toLocaleDateString('da-DK', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}
                   </p>
                 </div>
               ))}
