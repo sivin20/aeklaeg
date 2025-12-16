@@ -12,6 +12,7 @@ import TorwPage from './pages/TorwPage';
 import KaedekassenPage from './pages/KaedekassenPage.tsx';
 import EventPage from '@/pages/EventPage.tsx';
 import VaerftetPage from '@/pages/VaerftetPage.tsx';
+import ScrollToTop from '@/components/ScrollToTop.tsx';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path='/' element={<Index />} />
               <Route path='/elses-gab' element={<ElsesGabPage />} />

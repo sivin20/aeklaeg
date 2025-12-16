@@ -19,9 +19,9 @@ const EventsContext = createContext<EventsContextType | undefined>(undefined);
 async function fetchUpcomingEvents(limit = 20): Promise<BillettoEvent[]> {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  
+
   const res = await fetch(
-    `/api/billetto?endpoint=organiser/events&state=published&starts_after=${yesterday.toISOString()}&limit=${limit}&expand=data.gallery_items`,
+    `/api/billetto?endpoint=organiser/events&state=published&starts_after=${yesterday.toISOString()}&limit=${limit}&expand=data.gallery_items,data.editorial`,
   );
 
   if (!res.ok) {
@@ -70,7 +70,7 @@ async function fetchTicketTypes(limit = 50): Promise<BillettoTicketType[]> {
 
 function attachTicketTypesToEvents(
   events: BillettoEvent[],
-  ticketTypes: BillettoTicketType[]
+  ticketTypes: BillettoTicketType[],
 ): EventWithTickets[] {
   return events.map((event) => ({
     ...event,
@@ -87,14 +87,14 @@ export function EventsProvider({ children }: { children: React.ReactNode }) {
   const fetchAllEvents = async () => {
     setIsLoading(true);
     setError(null);
-    
+
     try {
       const [upcoming, previous, ticketTypes] = await Promise.all([
         fetchUpcomingEvents(20),
         fetchPreviousEvents(30),
         fetchTicketTypes(50),
       ]);
-      
+
       setUpcomingEvents(attachTicketTypesToEvents(upcoming, ticketTypes));
       setPreviousEvents(attachTicketTypesToEvents(previous, ticketTypes));
     } catch (err) {
