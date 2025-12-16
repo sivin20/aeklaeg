@@ -1,42 +1,13 @@
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
-import { useEffect, useState } from 'react';
-import { BillettoEvent, BillettoTicketType } from '@/types/billetto.ts';
-import { getTicketTypesForAccount } from '@/services/billetto.service.ts';
 import { useEvents } from '@/contexts/EventsContext';
+import { Link } from 'react-router-dom';
 
 const KaedekassenSection = () => {
-  const { upcomingEvents, isLoading: eventsLoading } = useEvents();
-  const [ticketTypes, setTicketTypes] = useState<BillettoTicketType[]>([]);
-  const [ticketTypesLoading, setTicketTypesLoading] = useState(true);
-  const [finalEvents, setFinalEvents] = useState<BillettoEvent[]>([]);
+  const { upcomingEvents, isLoading } = useEvents();
+  const finalEvents = upcomingEvents.slice(0, 3);
 
-  useEffect(() => {
-    async function loadTicketTypes() {
-      try {
-        const ticketTypes = await getTicketTypesForAccount();
-        setTicketTypes(ticketTypes);
-      } finally {
-        setTicketTypesLoading(false);
-      }
-    }
-    loadTicketTypes();
-  }, []);
-
-  useEffect(() => {
-    setFinalEvents(
-      upcomingEvents.slice(0, 3).map((event) => {
-        const eventTicketTypes = ticketTypes.filter(
-          (tt) => tt.event === event.id,
-        );
-        return { ...event, ticket_types: eventTicketTypes };
-      }),
-    );
-  }, [upcomingEvents, ticketTypes]);
-
-  const loading = eventsLoading || ticketTypesLoading;
-
-  if (loading) return <p className='text-center py-20'>Loading events...</p>;
+  if (isLoading) return <p className='text-center py-20'>Loading events...</p>;
 
   return (
     <section id='events' className='py-20 md:py-32 bg-card'>
@@ -55,11 +26,8 @@ const KaedekassenSection = () => {
 
         <div className='grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12'>
           {finalEvents.map((ev) => (
-            <a href={`/kaedekassen/${ev.id}`} key={ev.id}>
-              <div
-                key={ev.id}
-                className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500'
-              >
+            <Link to={`/kaedekassen/${ev.id}`} key={ev.id}>
+              <div className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500'>
                 <div className='aspect-[3/4] relative'>
                   <img
                     src={
@@ -84,7 +52,11 @@ const KaedekassenSection = () => {
                             (tt) => tt.type === 'PayTicketType' && !!tt.price,
                           )
                           .map((ticketType) => (
-                            <a href={ev.public_url} key={ticketType.id}>
+                            <a
+                              href={ev.public_url}
+                              key={ticketType.id}
+                              onClick={(e) => e.stopPropagation()}
+                            >
                               <Button>
                                 <div className='font-sans text-sm'>
                                   {`${(ticketType.price / 100).toFixed(0)} DKK`}
@@ -96,12 +68,12 @@ const KaedekassenSection = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className='text-center'>
-          <a href='/kaedekassen'>
+          <Link to='/kaedekassen'>
             <Button
               size='lg'
               className='bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-lg px-8'
@@ -109,7 +81,7 @@ const KaedekassenSection = () => {
               Se alle events
               <ArrowRight className='w-5 h-5' />
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

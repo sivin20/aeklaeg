@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useEvents } from '@/contexts/EventsContext';
+import { Link } from 'react-router-dom';
 
 const KaedekassenPage = () => {
   const { upcomingEvents, previousEvents, isLoading } = useEvents();
@@ -44,7 +45,7 @@ const KaedekassenPage = () => {
                     key={ev.id}
                     className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500'
                   >
-                    <a href={`kaedekassen/${ev.id}`}>
+                    <Link to={`/kaedekassen/${ev.id}`}>
                       <div className='aspect-[3/4] relative overflow-hidden'>
                         <img
                           src={
@@ -68,7 +69,7 @@ const KaedekassenPage = () => {
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
