@@ -82,7 +82,7 @@ const VaerftetPage = () => {
 
         <AboutSection />
 
-        <OpeningHours />
+        <OpeningHours pathPrefix="vaerftet" />
 
         <BarCard />
       </main>
