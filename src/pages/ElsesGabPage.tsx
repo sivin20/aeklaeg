@@ -38,7 +38,7 @@ const ElsesGabPage = () => {
         <EventSpaceSection />
 
         {/* Opening Hours */}
-        <OpeningHours />
+        <OpeningHours pathPrefix="elsesgab" />
 
         {/* Instagram Feed */}
         <InstagramFeed />

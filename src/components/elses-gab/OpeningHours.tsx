@@ -4,10 +4,16 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { database } from '@/lib/firebase';
+import { ref, onValue, set } from 'firebase/database';
 
 interface OpeningHourItem {
   day: string;
   hours: string;
+}
+
+interface OpeningHoursProps {
+  pathPrefix: string;
 }
 
 const defaultOpeningHours: OpeningHourItem[] = [
@@ -17,33 +23,53 @@ const defaultOpeningHours: OpeningHourItem[] = [
   { day: 'Søndag', hours: 'Lukket' },
 ];
 
-const STORAGE_KEY = 'elsesGabHours';
-
-const OpeningHours = () => {
+const OpeningHours = ({ pathPrefix }: OpeningHoursProps) => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [openingHours, setOpeningHours] =
     useState<OpeningHourItem[]>(defaultOpeningHours);
 
   useEffect(() => {
-    const savedHours = localStorage.getItem(STORAGE_KEY);
-    if (savedHours) setOpeningHours(JSON.parse(savedHours));
-  }, []);
-
-  const handleSave = () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(openingHours));
-    setIsEditing(false);
-    toast({
-      title: 'Gemt',
-      description: 'Åbningstider er blevet opdateret.',
+    const hoursRef = ref(database, `${pathPrefix}/openingHours`);
+    const unsubscribe = onValue(hoursRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setOpeningHours(data);
+      }
+      setIsLoading(false);
     });
+
+    return () => unsubscribe();
+  }, [pathPrefix]);
+
+  const handleSave = async () => {
+    try {
+      const hoursRef = ref(database, `${pathPrefix}/openingHours`);
+      await set(hoursRef, openingHours);
+      setIsEditing(false);
+      toast({
+        title: 'Gemt',
+        description: 'Åbningstider er blevet opdateret.',
+      });
+    } catch (error) {
+      console.error('Error saving opening hours:', error);
+      toast({
+        title: 'Fejl',
+        description: 'Kunne ikke gemme åbningstider.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleCancel = () => {
-    const savedHours = localStorage.getItem(STORAGE_KEY);
-    if (savedHours) setOpeningHours(JSON.parse(savedHours));
-    else setOpeningHours(defaultOpeningHours);
+    const hoursRef = ref(database, `${pathPrefix}/openingHours`);
+    onValue(hoursRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) setOpeningHours(data);
+      else setOpeningHours(defaultOpeningHours);
+    }, { onlyOnce: true });
     setIsEditing(false);
   };
 
@@ -64,6 +90,18 @@ const OpeningHours = () => {
     newHours[index][field] = value;
     setOpeningHours(newHours);
   };
+
+  if (isLoading) {
+    return (
+      <section className='py-16 md:py-24 bg-card' id='opening-hours'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-3xl mx-auto text-center'>
+            <Clock className='w-8 h-8 text-primary mx-auto animate-pulse' />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className='py-16 md:py-24 bg-card' id='opening-hours'>
