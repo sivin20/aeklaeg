@@ -26,7 +26,7 @@ const ElsesGabPage = () => {
               Elses Gab
             </h1>
             <p className='font-sans text-xl text-muted-foreground'>
-              Kaffe, Kage & Gode Historier
+              Café og Spisested
             </p>
           </div>
         </section>
