@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Ticket, Volume2 } from 'lucide-react';
 import { BillettoEvent } from '@/types/billetto';
@@ -17,6 +17,7 @@ interface EventCardProps {
 
 const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const navigate = useNavigate();
 
   // --- Helpers ---
   const formatDate = (dateString: string) => {
@@ -81,10 +82,14 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
       )}
 
       {/* Card */}
-      <Link
-        to={`${basePath}/${event.id}`}
-        key={event.id}
-        className='block h-full'
+      <div
+        className='block h-full cursor-pointer'
+        onClick={() => navigate(`${basePath}/${event.id}`)}
+        role='button'
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') navigate(`${basePath}/${event.id}`);
+        }}
       >
         <div className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500 bg-background h-full'>
           <div className='aspect-[3/4] relative'>
@@ -105,7 +110,7 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
                   variant='secondary'
                   className='bg-black/60 hover:bg-primary hover:text-primary-foreground text-white backdrop-blur-md border border-white/10 shadow-lg h-8 px-3 gap-2 transition-all duration-300'
                   onClick={(e) => {
-                    e.preventDefault(); // Prevent navigating to event page
+                    e.preventDefault();
                     e.stopPropagation();
                     setIsVideoOpen(true);
                   }}
@@ -147,8 +152,8 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
                 </div>
 
                 {/* Button (Right) */}
-                <a
-                  href={event.public_url}
+                <Link
+                  to={event.public_url}
                   target='_blank'
                   rel='noreferrer'
                   onClick={(e) => e.stopPropagation()}
@@ -164,12 +169,12 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
                       <Ticket className='w-4 h-4' />
                     </div>
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

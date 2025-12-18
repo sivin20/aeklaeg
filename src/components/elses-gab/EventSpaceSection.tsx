@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '@/components/ui/button.tsx';
-import { Link } from 'react-router-dom';
 import { Users, Utensils, Armchair, Beer, Phone, Bath } from 'lucide-react'; // Added Bath icon
 
 const EventSpaceSection = () => {
@@ -9,7 +8,7 @@ const EventSpaceSection = () => {
     { label: 'Spiseborde', count: 7, icon: Utensils },
     { label: 'Stole', count: 80, icon: Armchair },
     { label: 'Ølhaner', count: 3, icon: Beer },
-    { label: 'Badeværelse', count: 1, icon: Bath }, // Added bathroom here
+    { label: 'Badeværelse', count: 1, icon: Bath },
   ];
 
   const images = {
