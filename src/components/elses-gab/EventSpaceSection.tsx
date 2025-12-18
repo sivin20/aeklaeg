@@ -80,7 +80,7 @@ const EventSpaceSection = () => {
 
             {/* Bottom Section: "Call Else" Box */}
             <div className='mt-8 bg-muted/30 rounded-xl p-6 border border-border/50'>
-              <h4 className='font-serif text-2xl mb-2 text-card-foreground'>
+              <h4 className='font-typewriter text-xl mb-2 text-card-foreground'>
                 Book bord eller lokale
               </h4>
               <p className='text-muted-foreground text-sm mb-6 leading-relaxed'>

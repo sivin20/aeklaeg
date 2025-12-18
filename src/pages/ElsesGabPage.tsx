@@ -22,7 +22,7 @@ const ElsesGabPage = () => {
             <div className='absolute inset-0 bg-gradient-to-b from-background/80 to-background'></div>
           </div>
           <div className='relative z-10 text-center'>
-            <h1 className='font-serif text-5xl md:text-7xl font-bold mb-4 text-primary'>
+            <h1 className='font-typewriter text-4xl md:text-6xl font-bold mb-4 text-primary'>
               Elses Gab
             </h1>
             <p className='font-sans text-xl text-muted-foreground'>

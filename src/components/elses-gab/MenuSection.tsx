@@ -228,7 +228,7 @@ const SubcategorySection = ({
               className='text-center font-serif text-2xl font-bold italic max-w-xs bg-transparent'
             />
           ) : (
-            <h3 className='font-serif text-2xl md:text-3xl font-bold italic text-foreground/80'>
+            <h3 className='font-typewriter text-1xl md:text-2xl font-bold italic text-foreground/80'>
               {subcategory.name}
             </h3>
           )}
@@ -280,7 +280,7 @@ const SortableCategoryTab = ({
     return (
       <button
         onClick={onClick}
-        className={`pb-2 font-serif text-sm md:text-base uppercase tracking-[0.2em] transition-all relative ${
+        className={`pb-2 font-typewriter text-sm md:text-base uppercase tracking-[0.2em] transition-all relative ${
           isSelected
             ? 'text-primary font-bold after:content-[""] after:absolute after:bottom-[-17px] after:left-0 after:w-full after:h-0.5 after:bg-primary'
             : 'text-muted-foreground hover:text-foreground'
@@ -307,7 +307,7 @@ const SortableCategoryTab = ({
       <Input
         value={category.name}
         onChange={(e) => onUpdate(e.target.value)}
-        className='w-32 text-center font-serif text-xs uppercase h-8'
+        className='w-32 text-center font-sans text-xs uppercase h-8'
         onClick={onClick}
       />
       <Button
@@ -682,7 +682,7 @@ const MenuSection = () => {
         <div className='container mx-auto px-4'>
           {/* Header */}
           <div className='flex items-center justify-center gap-3 mb-16'>
-            <h2 className='font-serif text-4xl md:text-5xl font-bold text-center tracking-wide'>
+            <h2 className='font-typewriter text-3xl md:text-4xl font-bold text-center tracking-wide'>
               Menu
             </h2>
             {user && !isEditing && (
