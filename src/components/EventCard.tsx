@@ -1,15 +1,24 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Ticket } from 'lucide-react';
-import { BillettoEvent } from '@/types/billetto'; // Assuming you have this type, otherwise use 'any'
+import { Ticket, Volume2 } from 'lucide-react';
+import { BillettoEvent } from '@/types/billetto';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface EventCardProps {
-  event: BillettoEvent; // or 'any' if you don't have the type file
-  basePath?: string; // Optional: Defaults to '/kaedekassen'
+  event: BillettoEvent;
+  basePath?: string;
 }
 
 const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
-  // Helper function moved inside the component
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  // --- Helpers ---
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const currentYear = new Date().getFullYear();
@@ -23,7 +32,7 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
     });
   };
 
-  // 1. Find the main ticket price
+  // 1. Data Extraction
   const mainTicket = event.ticket_types?.find(
     (tt: any) => tt.type === 'PayTicketType' && !!tt.price,
   );
@@ -32,77 +41,136 @@ const EventCard = ({ event, basePath = '/kaedekassen' }: EventCardProps) => {
     ? `${(mainTicket.price / 100).toFixed(0)} DKK`
     : '';
 
-  // 2. Check for food add-on
   const hasFoodOption = event.ticket_types?.some(
     (tt: any) => tt.type === 'AddonTicketType' && !!tt.price,
   );
 
+  // 2. YouTube Logic
+  // Find the gallery item that is type 'youtube'
+  const youtubeItem = event.gallery_items?.data?.find(
+    (item: any) => item.type === 'youtube',
+  );
+
+  // Extract Video ID from the thumbnail URL (e.g. https://i.ytimg.com/vi/ID_HERE/maxresdefault.jpg)
+  const videoId = youtubeItem?.original_url
+    ? youtubeItem.original_url.match(/\/vi\/([^\/]+)\//)?.[1]
+    : null;
+
   return (
-    <Link to={`${basePath}/${event.id}`} key={event.id}>
-      <div className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500 bg-background h-full'>
-        <div className='aspect-[3/4] relative'>
-          <img
-            src={
-              event.gallery_items?.data[0]?.original_url ?? '/placeholder.jpg'
-            }
-            alt={event.name}
-            className='object-cover w-full h-full group-hover:scale-110 transition-transform duration-700'
-          />
+    <>
+      {/* Video Modal */}
+      {videoId && (
+        <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+          <DialogContent className='sm:max-w-[800px] bg-black border-border/20 p-0 overflow-hidden'>
+            <DialogHeader className='sr-only'>
+              <DialogTitle>Video: {event.name}</DialogTitle>
+            </DialogHeader>
+            <div className='aspect-video w-full'>
+              <iframe
+                width='100%'
+                height='100%'
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                title={event.name}
+                frameBorder='0'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                allowFullScreen
+              ></iframe>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
 
-          {/* Darker gradient at bottom for text readability */}
-          <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent'></div>
+      {/* Card */}
+      <Link
+        to={`${basePath}/${event.id}`}
+        key={event.id}
+        className='block h-full'
+      >
+        <div className='group relative rounded-lg overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500 bg-background h-full'>
+          <div className='aspect-[3/4] relative'>
+            {/* Image */}
+            <img
+              src={
+                event.gallery_items?.data[0]?.original_url ?? '/placeholder.jpg'
+              }
+              alt={event.name}
+              className='object-cover w-full h-full group-hover:scale-110 transition-transform duration-700'
+            />
 
-          <div className='absolute bottom-0 left-0 right-0 p-6'>
-            <h3 className='font-serif text-2xl font-bold mb-3 text-primary leading-tight'>
-              {event.name}
-            </h3>
-
-            <div className='flex items-end justify-between gap-3'>
-              {/* Text Information (Left) */}
-              <div className='flex flex-col gap-1'>
-                {/* Date: White/Gray & Capitalized Month */}
-                <p className='font-sans text-white/80 text-sm font-medium capitalize'>
-                  {formatDate(event.starts_at)}
-                </p>
-
-                {/* Price: Primary Color (Gold/Yellow) */}
-                {priceString && (
-                  <p className='font-sans text-primary text-base font-bold'>
-                    {priceString}
-                  </p>
-                )}
-
-                {hasFoodOption && (
-                  <p className='font-sans text-white/50 text-xs italic mt-1'>
-                    Mad kan tilkøbes
-                  </p>
-                )}
-              </div>
-
-              {/* Button (Right) */}
-              <a
-                href={event.public_url}
-                target='_blank'
-                rel='noreferrer'
-                onClick={(e) => e.stopPropagation()}
-              >
+            {/* "Lyt" / Sound Button (Only if video exists) */}
+            {videoId && (
+              <div className='absolute top-3 right-3 z-20'>
                 <Button
                   size='sm'
-                  className='bg-primary text-primary-foreground hover:bg-primary/90'
+                  variant='secondary'
+                  className='bg-black/60 hover:bg-primary hover:text-primary-foreground text-white backdrop-blur-md border border-white/10 shadow-lg h-8 px-3 gap-2 transition-all duration-300'
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent navigating to event page
+                    e.stopPropagation();
+                    setIsVideoOpen(true);
+                  }}
                 >
-                  <div className='font-sans text-sm flex gap-2 items-center font-semibold'>
-                    <span className='sm:inline md:hidden lg:inline'>
-                      Find billetter
-                    </span>
-                    <Ticket className='w-4 h-4' />
-                  </div>
+                  <Volume2 className='w-3.5 h-3.5' />
+                  <span className='text-xs font-semibold uppercase tracking-wider'>
+                    Lyt
+                  </span>
                 </Button>
-              </a>
+              </div>
+            )}
+
+            {/* Darker gradient at bottom for text readability */}
+            <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none'></div>
+
+            <div className='absolute bottom-0 left-0 right-0 p-6'>
+              <h3 className='font-serif text-2xl font-bold mb-3 text-primary leading-tight'>
+                {event.name}
+              </h3>
+
+              <div className='flex items-end justify-between gap-3'>
+                {/* Text Information (Left) */}
+                <div className='flex flex-col gap-1'>
+                  <p className='font-sans text-white/80 text-sm font-medium capitalize'>
+                    {formatDate(event.starts_at)}
+                  </p>
+
+                  {priceString && (
+                    <p className='font-sans text-primary text-base font-bold'>
+                      {priceString}
+                    </p>
+                  )}
+
+                  {hasFoodOption && (
+                    <p className='font-sans text-white/50 text-xs italic mt-1'>
+                      Mad kan tilkøbes
+                    </p>
+                  )}
+                </div>
+
+                {/* Button (Right) */}
+                <a
+                  href={event.public_url}
+                  target='_blank'
+                  rel='noreferrer'
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Button
+                    size='sm'
+                    className='bg-primary text-primary-foreground hover:bg-primary/90'
+                  >
+                    <div className='font-sans text-sm flex gap-2 items-center font-semibold'>
+                      <span className='sm:inline md:hidden lg:inline'>
+                        Find billetter
+                      </span>
+                      <Ticket className='w-4 h-4' />
+                    </div>
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </>
   );
 };
 
