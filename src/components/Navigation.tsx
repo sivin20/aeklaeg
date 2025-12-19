@@ -35,10 +35,14 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='flex items-center gap-2 text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
+                className='group flex items-center gap-2 text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
               >
                 {item.logo && (
-                  <img src={item.logo} alt={item.label} className='h-4 invert dark:invert-0' />
+                  <img 
+                    src={item.logo} 
+                    alt={item.label} 
+                    className='h-5 invert dark:invert-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:brightness-125' 
+                  />
                 )}
                 {item.label}
               </Link>
@@ -63,11 +67,15 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='flex items-center gap-2 py-3 text-foreground hover:text-primary transition-colors font-sans'
+                className='group flex items-center gap-2 py-3 text-foreground hover:text-primary transition-colors font-sans'
                 onClick={() => setIsOpen(false)}
               >
                 {item.logo && (
-                  <img src={item.logo} alt={item.label} className='h-4 invert dark:invert-0' />
+                  <img 
+                    src={item.logo} 
+                    alt={item.label} 
+                    className='h-5 invert dark:invert-0 transition-all duration-300 group-hover:scale-110' 
+                  />
                 )}
                 {item.label}
               </Link>

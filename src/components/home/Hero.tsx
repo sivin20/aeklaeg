@@ -32,27 +32,27 @@ const Hero = () => {
           </p>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
-                <img src='/logos/vaerftet_white.svg' alt='Værftet' className='h-6' />
-                <p className='font-sans text-foreground text-xs'>Cocktailbar</p>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
+                <p className='font-sans text-foreground text-sm'>Cocktailbar</p>
+                <img src='/logos/vaerftet_white.svg' alt='Værftet' className='h-8 transition-transform duration-300 group-hover:scale-110' />
               </div>
             </Link>
             <Link to='/elses-gab'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
-                <img src='/logos/elsesgab-white.svg' alt='Elses Gab' className='h-6' />
-                <p className='font-sans text-foreground text-xs'>Café</p>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
+                <p className='font-sans text-foreground text-sm'>Café</p>
+                <img src='/logos/elsesgab-white.svg' alt='Elses Gab' className='h-8 transition-transform duration-300 group-hover:scale-110' />
               </div>
             </Link>
             <Link to='/kaedekassen'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
-                <img src='/logos/kaedekassen_white.svg' alt='Kædekassen' className='h-6' />
-                <p className='font-sans text-foreground text-xs'>Spillested</p>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
+                <p className='font-sans text-foreground text-sm'>Spillested</p>
+                <img src='/logos/kaedekassen_white.svg' alt='Kædekassen' className='h-8 transition-transform duration-300 group-hover:scale-110' />
               </div>
             </Link>
             <Link to='/torw'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
-                <img src='/logos/torw_white.svg' alt='TØRW' className='h-6' />
-                <p className='font-sans text-foreground text-xs'>Tøjbutik</p>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
+                <p className='font-sans text-foreground text-sm'>Tøjbutik</p>
+                <img src='/logos/torw_white.svg' alt='TØRW' className='h-8 transition-transform duration-300 group-hover:scale-110' />
               </div>
             </Link>
           </div>
