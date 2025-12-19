@@ -9,23 +9,24 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: 'Hjem', href: '/' },
-    { label: 'Kædekassen', href: '/kaedekassen' },
-    { label: 'Elses Gab', href: '/elses-gab' },
-    { label: 'Værftet', href: '/vaerftet' },
-    { label: 'TØRW', href: '/torw' },
-    { label: 'Kontakt', href: '/#kontakt' },
+    { label: 'Hjem', href: '/', logo: null },
+    { label: 'Kædekassen', href: '/kaedekassen', logo: '/logos/kaedekassen_white.svg' },
+    { label: 'Elses Gab', href: '/elses-gab', logo: '/logos/elsesgab-white.svg' },
+    { label: 'Værftet', href: '/vaerftet', logo: '/logos/vaerftet_white.svg' },
+    { label: 'TØRW', href: '/torw', logo: '/logos/torw_white.svg' },
+    { label: 'Kontakt', href: '/#kontakt', logo: null },
   ];
 
   return (
     <nav className='fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border'>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-20'>
-          <Link
-            to='/'
-            className='font-typewriter text-xl font-bold text-primary'
-          >
-            Æ Klæg
+          <Link to='/'>
+            <img 
+              src='/logos/aeklaeg_white.svg' 
+              alt='Æ Klæg' 
+              className='h-10 invert dark:invert-0'
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,8 +35,11 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
+                className='flex items-center gap-2 text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
               >
+                {item.logo && (
+                  <img src={item.logo} alt={item.label} className='h-4 invert dark:invert-0' />
+                )}
                 {item.label}
               </Link>
             ))}
@@ -59,9 +63,12 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='block py-3 text-foreground hover:text-primary transition-colors font-sans'
+                className='flex items-center gap-2 py-3 text-foreground hover:text-primary transition-colors font-sans'
                 onClick={() => setIsOpen(false)}
               >
+                {item.logo && (
+                  <img src={item.logo} alt={item.label} className='h-4 invert dark:invert-0' />
+                )}
                 {item.label}
               </Link>
             ))}
