@@ -17,9 +17,11 @@ const Hero = () => {
       </div>
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
-        <h1 className='font-typewriter text-5xl md:text-8xl font-bold mb-6 text-primary'>
-          Æ Klæg
-        </h1>
+        <img 
+          src='/logos/aeklaeg_white.svg' 
+          alt='Æ Klæg' 
+          className='h-24 md:h-40 mx-auto mb-6'
+        />
         <p className='font-serif text-2xl md:text-4xl mb-4 text-foreground'>
           Havnevej 2, 6720
         </p>
@@ -30,27 +32,27 @@ const Hero = () => {
           </p>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
-                <p className='font-sans text-foreground'>
-                  Cocktailbaren Værftet
-                </p>
+              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
+                <img src='/logos/vaerftet_white.svg' alt='Værftet' className='h-6' />
+                <p className='font-sans text-foreground text-xs'>Cocktailbar</p>
               </div>
             </Link>
             <Link to='/elses-gab'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
-                <p className='font-sans text-foreground'>Caféen Elses Gab</p>
+              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
+                <img src='/logos/elsesgab-white.svg' alt='Elses Gab' className='h-6' />
+                <p className='font-sans text-foreground text-xs'>Café</p>
               </div>
             </Link>
             <Link to='/kaedekassen'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
-                <p className='font-sans text-foreground'>
-                  Spillestedet Kædekassen
-                </p>
+              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
+                <img src='/logos/kaedekassen_white.svg' alt='Kædekassen' className='h-6' />
+                <p className='font-sans text-foreground text-xs'>Spillested</p>
               </div>
             </Link>
             <Link to='/torw'>
-              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors'>
-                <p className='font-sans text-foreground'>Tøjbutikken TØRW</p>
+              <div className='p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-colors flex flex-col items-center gap-2'>
+                <img src='/logos/torw_white.svg' alt='TØRW' className='h-6' />
+                <p className='font-sans text-foreground text-xs'>Tøjbutik</p>
               </div>
             </Link>
           </div>
