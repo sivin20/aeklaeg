@@ -21,7 +21,7 @@ const Hero = () => {
         <img
           src='/logos/aeklaeg_primary.svg'
           alt=''
-          className='w-[80%] md:w-[60%] max-w-4xl opacity-[0.08]'
+          className='w-[80%] h-auto md:w-auto md:h-[60vh] opacity-[0.08]'
         />
       </div>
 
