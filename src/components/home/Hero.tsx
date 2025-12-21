@@ -14,7 +14,7 @@ const Hero = () => {
   }, []);
 
   // Calculate rotation and scale based on scroll
-  const rotation = scrollY * 0.1; // Rotate as you scroll
+  const rotation = scrollY * 0.05; // Rotate as you scroll
   const scale = 1 + Math.min(scrollY * 0.0003, 0.15); // Grow up to 15% larger
 
   return (
@@ -45,19 +45,7 @@ const Hero = () => {
       </div>
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
-        {/*<img*/}
-        {/*  src='/logos/aeklaeg_primary.svg'*/}
-        {/*  alt='Æ Klæg'*/}
-        {/*  className='h-24 md:h-40 mx-auto mb-6'*/}
-        {/*/>*/}
-        {/*<p className='font-typewriter text-2xl md:text-4xl mb-4 text-primary'>*/}
-        {/*  Æ Klæg*/}
-        {/*</p>*/}
-        <div className='max-w-2xl mx-auto mt-12 space-y-6'>
-          {/*<p className='font-sans text-lg md:text-xl text-muted-foreground leading-relaxed'>*/}
-          {/*  Er navnet på den paraply, der samler alle vores aktiviteter på*/}
-          {/*  Havnevej 2*/}
-          {/*</p>*/}
+        <div className='max-w-2xl mx-auto mb-12 space-y-6'>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
