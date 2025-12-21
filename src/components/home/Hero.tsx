@@ -21,24 +21,24 @@ const Hero = () => {
         <img
           src='/logos/aeklaeg_primary.svg'
           alt=''
-          className='w-[80%] h-auto md:w-auto md:h-[60vh] opacity-[0.08]'
+          className='w-[80%] h-auto md:w-auto md:h-[60vh] opacity-[0.75]'
         />
       </div>
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
-        <img
-          src='/logos/aeklaeg_primary.svg'
-          alt='Æ Klæg'
-          className='h-24 md:h-40 mx-auto mb-6'
-        />
-        <p className='font-typewriter text-2xl md:text-4xl mb-4 text-primary'>
-          Æ Klæg
-        </p>
+        {/*<img*/}
+        {/*  src='/logos/aeklaeg_primary.svg'*/}
+        {/*  alt='Æ Klæg'*/}
+        {/*  className='h-24 md:h-40 mx-auto mb-6'*/}
+        {/*/>*/}
+        {/*<p className='font-typewriter text-2xl md:text-4xl mb-4 text-primary'>*/}
+        {/*  Æ Klæg*/}
+        {/*</p>*/}
         <div className='max-w-2xl mx-auto mt-12 space-y-6'>
-          <p className='font-sans text-lg md:text-xl text-muted-foreground leading-relaxed'>
-            Er navnet på den paraply, der samler alle vores aktiviteter på
-            Havnevej 2
-          </p>
+          {/*<p className='font-sans text-lg md:text-xl text-muted-foreground leading-relaxed'>*/}
+          {/*  Er navnet på den paraply, der samler alle vores aktiviteter på*/}
+          {/*  Havnevej 2*/}
+          {/*</p>*/}
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
