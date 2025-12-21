@@ -14,14 +14,26 @@ const Navigation = () => {
       label: 'Kædekassen',
       href: '/kaedekassen',
       logo: '/logos/kaedekassen_white.svg',
+      hoverLogo: '/logos/kaedekassen_primary.svg',
     },
     {
       label: 'Elses Gab',
       href: '/elses-gab',
       logo: '/logos/elsesgab_white.svg',
+      hoverLogo: '/logos/elsesgab_primary.svg',
     },
-    { label: 'Værftet', href: '/vaerftet', logo: '/logos/vaerftet_white.svg' },
-    { label: 'TØRW', href: '/torw', logo: '/logos/torw_white.svg' },
+    {
+      label: 'Værftet',
+      href: '/vaerftet',
+      logo: '/logos/vaerftet_white.svg',
+      hoverLogo: '/logos/vaerftet_primary.svg',
+    },
+    {
+      label: 'TØRW',
+      href: '/torw',
+      logo: '/logos/torw_white.svg',
+      hoverLogo: '/logos/torw_primary.svg',
+    },
     { label: 'Kontakt', href: '/#kontakt', logo: null },
   ];
 
@@ -29,16 +41,14 @@ const Navigation = () => {
     <nav className='fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border'>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-20'>
-          <div className='flex items-center gap-3 text-primary'>
+          <Link to='/' className='flex items-center gap-3 text-primary'>
             <h2 className='text-2xl font-typewriter'>Æ Klæg</h2>
-            <Link to='/'>
-              <img
-                src='/logos/aeklaeg_primary.svg'
-                alt='Æ Klæg'
-                className='h-10'
-              />
-            </Link>
-          </div>
+            <img
+              src='/logos/aeklaeg_primary.svg'
+              alt='Æ Klæg'
+              className='h-10'
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center gap-8'>
@@ -49,11 +59,18 @@ const Navigation = () => {
                 className='group flex items-center gap-2 text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
               >
                 {item.logo && (
-                  <img
-                    src={item.logo}
-                    alt={item.label}
-                    className='h-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:brightness-125'
-                  />
+                  <span className='relative h-5 w-5'>
+                    <img
+                      src={item.logo}
+                      alt={item.label}
+                      className='absolute inset-0 h-5 w-5 transition-all duration-300 group-hover:opacity-0'
+                    />
+                    <img
+                      src={item.hoverLogo}
+                      alt={`${item.label} yellow`}
+                      className='absolute group-hover:scale-110 group-hover:rotate-3 inset-0 h-5 w-5 opacity-0 transition-all duration-300 group-hover:opacity-100'
+                    />
+                  </span>
                 )}
                 {item.label}
               </Link>

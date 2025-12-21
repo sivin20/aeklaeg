@@ -18,12 +18,12 @@ const Hero = () => {
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
         <img
-          src='/logos/aeklaeg_white.svg'
+          src='/logos/aeklaeg_primary.svg'
           alt='Æ Klæg'
           className='h-24 md:h-40 mx-auto mb-6'
         />
-        <p className='font-serif text-2xl md:text-4xl mb-4 text-foreground'>
-          Havnevej 2, 6720
+        <p className='font-typewriter text-2xl md:text-4xl mb-4 text-primary'>
+          Æ Klæg
         </p>
         <div className='max-w-2xl mx-auto mt-12 space-y-6'>
           <p className='font-sans text-lg md:text-xl text-muted-foreground leading-relaxed'>
@@ -33,41 +33,61 @@ const Hero = () => {
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <p className='font-sans text-foreground text-sm'>Cocktailbar</p>
+                <div className='items-start flex flex-col'>
+                  <p className='font-sans text-foreground text-sm'>
+                    Cocktailbaren
+                  </p>
+                  <p className='font-sans text-foreground text-sm'>Værftet</p>
+                </div>
                 <img
                   src='/logos/vaerftet_white.svg'
                   alt='Værftet'
-                  className='h-8 transition-transform duration-300 group-hover:scale-110'
+                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/elses-gab'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <p className='font-sans text-foreground text-sm'>Café</p>
+                <div className='items-start flex flex-col'>
+                  <p className='font-sans text-foreground text-sm'>Caféen</p>
+                  <p className='font-sans text-foreground text-sm'>Elses Gab</p>
+                </div>
                 <img
                   src='/logos/elsesgab_white.svg'
                   alt='Elses Gab'
-                  className='h-8 transition-transform duration-300 group-hover:scale-110'
+                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/kaedekassen'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <p className='font-sans text-foreground text-sm'>Spillested</p>
+                <div className='items-start flex flex-col'>
+                  <p className='font-sans text-foreground text-sm'>
+                    Spillestedet
+                  </p>
+                  <p className='font-sans text-foreground text-sm'>
+                    Kædekassen
+                  </p>
+                </div>
                 <img
                   src='/logos/kaedekassen_white.svg'
                   alt='Kædekassen'
-                  className='h-8 transition-transform duration-300 group-hover:scale-110'
+                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/torw'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <p className='font-sans text-foreground text-sm'>Tøjbutik</p>
+                <div className='items-start flex flex-col'>
+                  <p className='font-sans text-foreground text-sm'>
+                    Tøjbutikken
+                  </p>
+                  <p className='font-sans text-foreground text-sm'>TØRW</p>
+                </div>
                 <img
                   src='/logos/torw_white.svg'
                   alt='TØRW'
-                  className='h-8 transition-transform duration-300 group-hover:scale-110'
+                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
