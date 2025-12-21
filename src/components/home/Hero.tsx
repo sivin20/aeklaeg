@@ -1,6 +1,22 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate rotation and scale based on scroll
+  const rotation = scrollY * 0.1; // Rotate as you scroll
+  const scale = 1 + Math.min(scrollY * 0.0003, 0.15); // Grow up to 15% larger
+
   return (
     <section
       id='hjem'
@@ -21,7 +37,10 @@ const Hero = () => {
         <img
           src='/logos/aeklaeg_primary.svg'
           alt=''
-          className='w-[80%] h-auto md:w-auto md:h-[60vh] opacity-[0.75]'
+          className='w-[85%] max-w-[500px] md:max-w-none md:w-auto md:h-[75vh] opacity-[0.75] transition-transform duration-100 ease-out'
+          style={{
+            transform: `rotate(${rotation}deg) scale(${scale})`,
+          }}
         />
       </div>
 
