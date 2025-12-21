@@ -19,9 +19,9 @@ const Hero = () => {
       {/* Background Logo */}
       <div className='absolute inset-0 z-[5] flex items-center justify-center pointer-events-none'>
         <img
-          src='/logos/aeklaeg_white.svg'
+          src='/logos/aeklaeg_primary.svg'
           alt=''
-          className='w-[80%] md:w-[60%] max-w-4xl opacity-[0.03]'
+          className='w-[80%] md:w-[60%] max-w-4xl opacity-[0.08]'
         />
       </div>
 
