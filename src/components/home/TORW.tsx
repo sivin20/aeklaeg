@@ -4,9 +4,16 @@ const TORW = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-primary">
-              TØRW
-            </h2>
+            <div className="flex items-center gap-4 mb-6">
+              <img
+                src="/logos/torw_primary.svg"
+                alt="TØRW"
+                className="h-12 md:h-16"
+              />
+              <h2 className="font-serif text-4xl md:text-6xl font-bold text-primary">
+                TØRW
+              </h2>
+            </div>
             <h3 className="font-serif text-2xl md:text-3xl mb-8 text-secondary">
               Tøjbutik og Unika
             </h3>

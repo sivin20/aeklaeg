@@ -14,9 +14,16 @@ const Vaerftet = () => {
             </div>
           </div>
           <div>
-            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-primary">
-              Værftet
-            </h2>
+            <div className="flex items-center gap-4 mb-6">
+              <img
+                src="/logos/vaerftet_primary.svg"
+                alt="Værftet"
+                className="h-12 md:h-16"
+              />
+              <h2 className="font-serif text-4xl md:text-6xl font-bold text-primary">
+                Værftet
+              </h2>
+            </div>
             <h3 className="font-serif text-2xl md:text-3xl mb-8 text-secondary">
               Cocktailbar
             </h3>

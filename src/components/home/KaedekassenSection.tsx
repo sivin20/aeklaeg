@@ -14,8 +14,12 @@ const KaedekassenSection = () => {
     <section id='events' className='py-20 md:py-32 bg-card'>
       <div className='container mx-auto px-4'>
         <div className='text-center mb-16'>
-          <div className='flex items-center justify-center gap-3 mb-6'>
-            <Calendar className='w-10 h-10 text-primary' />
+          <div className='flex items-center justify-center gap-4 mb-6'>
+            <img
+              src='/logos/kaedekassen_primary.svg'
+              alt='Kædekassen'
+              className='h-12 md:h-16'
+            />
             <h2 className='font-serif text-4xl md:text-6xl font-bold text-foreground'>
               Kædekassen
             </h2>

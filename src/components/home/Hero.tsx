@@ -16,6 +16,15 @@ const Hero = () => {
         <div className='absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background'></div>
       </div>
 
+      {/* Background Logo */}
+      <div className='absolute inset-0 z-[5] flex items-center justify-center pointer-events-none'>
+        <img
+          src='/logos/aeklaeg_white.svg'
+          alt=''
+          className='w-[80%] md:w-[60%] max-w-4xl opacity-[0.03]'
+        />
+      </div>
+
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
         <img
           src='/logos/aeklaeg_primary.svg'

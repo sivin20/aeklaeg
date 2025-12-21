@@ -9,32 +9,12 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: 'Hjem', href: '/', logo: null },
-    {
-      label: 'Kædekassen',
-      href: '/kaedekassen',
-      logo: '/logos/kaedekassen_white.svg',
-      hoverLogo: '/logos/kaedekassen_primary.svg',
-    },
-    {
-      label: 'Elses Gab',
-      href: '/elses-gab',
-      logo: '/logos/elsesgab_white.svg',
-      hoverLogo: '/logos/elsesgab_primary.svg',
-    },
-    {
-      label: 'Værftet',
-      href: '/vaerftet',
-      logo: '/logos/vaerftet_white.svg',
-      hoverLogo: '/logos/vaerftet_primary.svg',
-    },
-    {
-      label: 'TØRW',
-      href: '/torw',
-      logo: '/logos/torw_white.svg',
-      hoverLogo: '/logos/torw_primary.svg',
-    },
-    { label: 'Kontakt', href: '/#kontakt', logo: null },
+    { label: 'Hjem', href: '/' },
+    { label: 'Kædekassen', href: '/kaedekassen' },
+    { label: 'Elses Gab', href: '/elses-gab' },
+    { label: 'Værftet', href: '/vaerftet' },
+    { label: 'TØRW', href: '/torw' },
+    { label: 'Kontakt', href: '/#kontakt' },
   ];
 
   return (
@@ -56,22 +36,8 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='group flex items-center gap-2 text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
+                className='text-foreground hover:text-primary transition-colors font-sans text-sm tracking-wide'
               >
-                {item.logo && (
-                  <span className='relative h-5 w-5'>
-                    <img
-                      src={item.logo}
-                      alt={item.label}
-                      className='absolute inset-0 h-5 w-5 transition-all duration-300 group-hover:opacity-0'
-                    />
-                    <img
-                      src={item.hoverLogo}
-                      alt={`${item.label} yellow`}
-                      className='absolute group-hover:scale-110 group-hover:rotate-3 inset-0 h-5 w-5 opacity-0 transition-all duration-300 group-hover:opacity-100'
-                    />
-                  </span>
-                )}
                 {item.label}
               </Link>
             ))}
@@ -95,16 +61,9 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className='group flex items-center gap-2 py-3 text-foreground hover:text-primary transition-colors font-sans'
+                className='block py-3 text-foreground hover:text-primary transition-colors font-sans'
                 onClick={() => setIsOpen(false)}
               >
-                {item.logo && (
-                  <img
-                    src={item.logo}
-                    alt={item.label}
-                    className='h-5 transition-all duration-300 group-hover:scale-110'
-                  />
-                )}
                 {item.label}
               </Link>
             ))}
