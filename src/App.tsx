@@ -12,8 +12,8 @@ import TorwPage from './pages/TorwPage';
 import KaedekassenPage from './pages/KaedekassenPage.tsx';
 import EventPage from '@/pages/EventPage.tsx';
 import VaerftetPage from '@/pages/VaerftetPage.tsx';
+import KontaktPage from '@/pages/KontaktPage.tsx';
 import ScrollToTop from '@/components/ScrollToTop.tsx';
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,6 +32,7 @@ const App = () => (
               <Route path='/kaedekassen' element={<KaedekassenPage />} />
               <Route path='/kaedekassen/:id' element={<EventPage />} />
               <Route path='/vaerftet' element={<VaerftetPage />} />
+              <Route path='/kontakt' element={<KontaktPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path='*' element={<NotFound />} />
             </Routes>
