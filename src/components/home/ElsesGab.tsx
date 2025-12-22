@@ -20,13 +20,16 @@ const ElsesGab = () => {
             <div className='space-y-6 text-muted-foreground'>
               <p className='font-sans text-lg leading-relaxed'>
                 Elses Gab er en hyggelig café, der emmer af hjemlig charme. Her
-                kan du nyde god kaffe, lækker brunch og hjemmelavet mad i
-                hyggelige omgivelser.
+                bydes gæsterne velkommen af duften af friskbagt brød og
+                nybrygget kaffe.
               </p>
               <p className='font-sans text-lg leading-relaxed'>
-                Caféen er navngivet efter Else, der sammen med Alan står bag
-                hele Æ Klæg. Navnet "Gab" henviser til det hyggelige smørhul,
-                hvor man kan få en sludder over en kop kaffe.
+                På menukortet finder du et udvalg af smørrebrød med et tvist, du
+                ikke så ofte ser.Den flade til Gabet, åbne sandwiches på
+                hjemmebagt brød, og mad vafler med forskellige toppings. Stuen
+                du kommer ind i fra gårdspladsen, eller direkte fra vejen, kan
+                på mange måder vække minder om et besøg hos bedstemor. Stuen
+                danner rammen omkring den hyggelige frokost, hygge i sofagruppe.
               </p>
               <div className='pt-4'>
                 <div className='inline-block px-6 py-3 bg-primary/10 border border-primary rounded-lg'>
