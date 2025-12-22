@@ -19,12 +19,19 @@ const TORW = () => {
             </h3>
             <div className='space-y-6 text-muted-foreground'>
               <p className='font-sans text-lg leading-relaxed'>
-                TØRW er vores tøjbutik, hvor du finder udvalgte brands og unika
-                pieces. Vi fokuserer på kvalitet, stil og tidløst design.
+                Træd ind i Tørw, hvor mode møder stil og kvalitet. Vores butik
+                på Fanø byder på en unik shoppingoplevelse. TØRW åbnede dørene
+                2. juni 2023 og har beliggenhed i Æ’ Klæg, et lille kulturhus
+                samt butiksfællesskab, tæt ved færgelejet i Nordby på Fanø.
               </p>
               <p className='font-sans text-lg leading-relaxed'>
-                Butikken rummer også et galleri med skiftende udstillinger af
-                lokale kunstnere og håndværkere. Kom forbi og bliv inspireret.
+                I TØRW er der fokus på kvalitetstøj, klassisk tidløst design og
+                nutidens fashion. Vores produkter er inspireret fra 1920 til
+                1960 slidstærke arbejdstøj blandet med et maritimt udtryk. Der
+                tilbydes også et udvalg af plejeprodukter til manden med og uden
+                skæg, håndlavede lædervarer og hatte til al slags vejr. Foruden
+                at der ikke gåes på kompromis med kvalitet, sættes der en stor
+                ære i god service i et behageligt og afslappende miljø.
               </p>
               <div className='pt-4'>
                 <div className='inline-block px-6 py-3 bg-primary/10 border border-primary rounded-lg'>
