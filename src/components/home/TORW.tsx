@@ -38,7 +38,7 @@ const TORW = () => {
           <div className='order-1 md:order-2'>
             <div className='relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl'>
               <img
-                src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1470'
+                src='/img/torw.png'
                 alt='TØRW Tøjbutik'
                 className='object-cover w-full h-full hover:scale-105 transition-transform duration-700'
               />

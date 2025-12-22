@@ -9,7 +9,7 @@ const ElsesGab = () => {
                 Elses Gab
               </h2>
               <img
-                src='/logos/elsesgab_primary.svg'
+                src='/logos/elsesgab_outlined-primary.svg'
                 alt='Elses Gab'
                 className='h-12 md:h-16'
               />
@@ -40,7 +40,7 @@ const ElsesGab = () => {
           <div className='order-1 md:order-2'>
             <div className='relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl'>
               <img
-                src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1447'
+                src='/img/elsesgab.png'
                 alt='Elses Gab Café'
                 className='object-cover w-full h-full hover:scale-105 transition-transform duration-700'
               />

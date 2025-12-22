@@ -9,7 +9,7 @@ const Vaerftet = () => {
           <div>
             <div className='relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl'>
               <img
-                src='https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1469'
+                src='/img/vaerftet.png'
                 alt='Værftet Cocktailbar'
                 className='object-cover w-full h-full hover:scale-105 transition-transform duration-700'
               />
