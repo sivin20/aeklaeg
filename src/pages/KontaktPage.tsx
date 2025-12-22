@@ -5,14 +5,14 @@ import { MapPin, Mail, Instagram, Facebook, ExternalLink } from 'lucide-react';
 const KontaktPage = () => {
   const address = 'Havnevej 2, 6720 Nordby, Fanø';
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-  
+
   // Static map image with sepia styling
   const staticMapUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v11/static/8.3933,55.4478,14,0/1200x600@2x?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw`;
 
   return (
     <div className='min-h-screen bg-background text-foreground flex flex-col'>
       <Navigation />
-      
+
       <main className='flex-1'>
         {/* Hero Map Section */}
         <section className='relative h-[50vh] md:h-[60vh] overflow-hidden'>
@@ -25,28 +25,31 @@ const KontaktPage = () => {
           >
             <div className='absolute inset-0 bg-card'>
               <iframe
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2298.5!2d8.3933!3d55.4478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDI2JzUyLjEiTiA4wrAyMycyNS45IkU!5e0!3m2!1sda!2sdk!4v1234567890`}
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2262.953711590034!2d8.400986692423336!3d55.4460390458953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464b27caee823255%3A0xc46d00aae13d9e3a!2zVsOmcmZ0ZXQ!5e0!3m2!1sda!2sdk!4v1766446224124!5m2!1sda!2sdk'
                 width='100%'
                 height='100%'
-                style={{ border: 0, filter: 'grayscale(100%) sepia(30%) contrast(0.9)' }}
+                style={{
+                  border: 0,
+                  filter: 'grayscale(100%) sepia(30%) contrast(0.9)',
+                }}
                 allowFullScreen
                 loading='lazy'
                 referrerPolicy='no-referrer-when-downgrade'
                 title='Æ Klæg location'
                 className='transition-all duration-500 group-hover:filter-none'
-              />
+              ></iframe>
             </div>
-            
+
             {/* Overlay gradient */}
             <div className='absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none' />
-            
+
             {/* Click hint */}
             <div className='absolute top-4 right-4 bg-card/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-border flex items-center gap-2 text-sm text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity'>
               <ExternalLink className='h-4 w-4' />
               Åbn i Google Maps
             </div>
           </a>
-          
+
           {/* Location Pin */}
           <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10'>
             <div className='bg-primary text-primary-foreground p-4 rounded-full shadow-lg'>
@@ -63,7 +66,8 @@ const KontaktPage = () => {
                 Kontakt
               </h1>
               <p className='font-sans text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-16'>
-                Vi glæder os til at byde dig velkommen i Æ Klæg. Find os ved havnen i Nordby på Fanø.
+                Vi glæder os til at byde dig velkommen i Æ Klæg. Find os ved
+                havnen i Nordby på Fanø.
               </p>
 
               {/* Contact Cards */}
@@ -76,7 +80,8 @@ const KontaktPage = () => {
                   </h2>
                   <p className='font-sans text-muted-foreground leading-relaxed mb-6'>
                     Havnevej 2<br />
-                    6720 Nordby<br />
+                    6720 Nordby
+                    <br />
                     Fanø, Danmark
                   </p>
                   <a
@@ -97,7 +102,8 @@ const KontaktPage = () => {
                     Email
                   </h2>
                   <p className='font-sans text-muted-foreground leading-relaxed mb-6'>
-                    Har du spørgsmål eller ønsker at booke?<br />
+                    Har du spørgsmål eller ønsker at booke?
+                    <br />
                     Send os en mail, så vender vi tilbage hurtigst muligt.
                   </p>
                   <a
@@ -115,7 +121,8 @@ const KontaktPage = () => {
                   Følg os
                 </h2>
                 <p className='font-sans text-muted-foreground mb-8'>
-                  Hold dig opdateret med events, nyheder og stemningen fra Æ Klæg
+                  Hold dig opdateret med events, nyheder og stemningen fra Æ
+                  Klæg
                 </p>
                 <div className='flex justify-center gap-4'>
                   <a
