@@ -14,7 +14,7 @@ const Navigation = () => {
     { label: 'Elses Gab', href: '/elses-gab' },
     { label: 'Værftet', href: '/vaerftet' },
     { label: 'TØRW', href: '/torw' },
-    { label: 'Kontakt', href: '/#kontakt' },
+    { label: 'Kontakt', href: '/kontakt' },
   ];
 
   return (

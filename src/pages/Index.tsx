@@ -5,7 +5,6 @@ import Story from '@/components/home/Story.tsx';
 import ElsesGab from '@/components/home/ElsesGab.tsx';
 import Vaerftet from '@/components/home/Vaerftet.tsx';
 import TORW from '@/components/home/TORW.tsx';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -19,7 +18,6 @@ const Index = () => {
         <ElsesGab />
         <Vaerftet />
         <TORW />
-        <Contact />
       </main>
       <Footer />
     </div>
