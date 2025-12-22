@@ -348,7 +348,7 @@ const MenuSection = () => {
 
   // --- SAFE FIREBASE LOADING ---
   useEffect(() => {
-    const menuRef = ref(database, 'menu');
+    const menuRef = ref(database, 'zhLGIqf2J0aXtotDOJYqLXodJTC2/menu');
 
     const unsubscribe = onValue(
       menuRef,
@@ -386,7 +386,9 @@ const MenuSection = () => {
       if (!confirm('Du er ved at slette hele menuen. Er du sikker?')) return;
     }
 
-    set(ref(database, 'menu'), localMenu)
+    const path = `zhLGIqf2J0aXtotDOJYqLXodJTC2/menu`;
+    console.log('Saving menu to Firebase at path:', path, localMenu);
+    set(ref(database, path), localMenu)
       .then(() => {
         setIsEditing(false);
         toast({ title: 'Succes', description: 'Menuen er gemt og opdateret.' });

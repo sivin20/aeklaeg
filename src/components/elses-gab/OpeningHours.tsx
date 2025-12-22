@@ -65,11 +65,15 @@ const OpeningHours = ({ pathPrefix }: OpeningHoursProps) => {
 
   const handleCancel = () => {
     const hoursRef = ref(database, `${pathPrefix}/openingHours`);
-    onValue(hoursRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) setOpeningHours(data);
-      else setOpeningHours(defaultOpeningHours);
-    }, { onlyOnce: true });
+    onValue(
+      hoursRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (data) setOpeningHours(data);
+        else setOpeningHours(defaultOpeningHours);
+      },
+      { onlyOnce: true },
+    );
     setIsEditing(false);
   };
 

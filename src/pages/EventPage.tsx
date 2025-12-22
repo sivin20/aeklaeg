@@ -117,7 +117,7 @@ const EventsPage = () => {
         </Dialog>
       )}
 
-      <main className='pt-24 flex-grow'>
+      <main className='pt-10 flex-grow'>
         <section className='pb-16 md:pb-24'>
           <div className='container mx-auto px-4 max-w-6xl'>
             {/* Back Button */}

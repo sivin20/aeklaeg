@@ -15,14 +15,14 @@ const KaedekassenSection = () => {
       <div className='container mx-auto px-4'>
         <div className='text-center mb-16'>
           <div className='flex items-center justify-center gap-4 mb-6'>
+            <h2 className='font-serif text-4xl md:text-6xl font-bold text-foreground'>
+              Kædekassen
+            </h2>
             <img
               src='/logos/kaedekassen_primary.svg'
               alt='Kædekassen'
               className='h-12 md:h-16'
             />
-            <h2 className='font-serif text-4xl md:text-6xl font-bold text-foreground'>
-              Kædekassen
-            </h2>
           </div>
           <p className='font-sans text-xl text-muted-foreground max-w-2xl mx-auto'>
             Oplev den bedste musik, altid fuldstændigt intimt og tæt på

@@ -48,8 +48,8 @@ const Hero = () => {
         <div className='max-w-2xl mx-auto mb-12 space-y-6'>
           <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
             <Link to='/vaerftet'>
-              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <div className='items-start flex flex-col'>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-center sm:justify-between gap-3 hover:bg-card/70'>
+                <div className='items-center sm:items-start flex flex-col'>
                   <p className='font-sans text-foreground text-sm'>
                     Cocktailbaren
                   </p>
@@ -58,26 +58,26 @@ const Hero = () => {
                 <img
                   src='/logos/vaerftet_white.svg'
                   alt='Værftet'
-                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
+                  className='hidden sm:block h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/elses-gab'>
-              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <div className='items-start flex flex-col'>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-center sm:justify-between gap-3 hover:bg-card/70'>
+                <div className='items-center sm:items-start flex flex-col'>
                   <p className='font-sans text-foreground text-sm'>Caféen</p>
                   <p className='font-sans text-foreground text-sm'>Elses Gab</p>
                 </div>
                 <img
-                  src='/logos/elsesgab_white.svg'
+                  src='/logos/elsesgab_outlined-white.svg'
                   alt='Elses Gab'
-                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
+                  className='hidden sm:block h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/kaedekassen'>
-              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <div className='items-start flex flex-col'>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-center sm:justify-between gap-3 hover:bg-card/70'>
+                <div className='items-center sm:items-start flex flex-col'>
                   <p className='font-sans text-foreground text-sm'>
                     Spillestedet
                   </p>
@@ -88,13 +88,13 @@ const Hero = () => {
                 <img
                   src='/logos/kaedekassen_white.svg'
                   alt='Kædekassen'
-                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
+                  className='hidden sm:block h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>
             <Link to='/torw'>
-              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-between gap-3 hover:bg-card/70'>
-                <div className='items-start flex flex-col'>
+              <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-center sm:justify-between gap-3 hover:bg-card/70'>
+                <div className='items-center sm:items-start flex flex-col'>
                   <p className='font-sans text-foreground text-sm'>
                     Tøjbutikken
                   </p>
@@ -103,7 +103,7 @@ const Hero = () => {
                 <img
                   src='/logos/torw_white.svg'
                   alt='TØRW'
-                  className='h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
+                  className='hidden sm:block h-8 sm:h-16 transition-transform duration-300 group-hover:scale-110'
                 />
               </div>
             </Link>

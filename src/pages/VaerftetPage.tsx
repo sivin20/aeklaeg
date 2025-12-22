@@ -13,7 +13,7 @@ const VaerftetPage = () => {
   return (
     <div className='min-h-screen bg-background text-foreground'>
       <Navigation />
-      <main className='pt-20'>
+      <main>
         <section className='relative h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden'>
           {/* --- BACKGROUND LAYERS --- */}
           <div className='absolute inset-0 z-0'>
@@ -82,7 +82,7 @@ const VaerftetPage = () => {
 
         <AboutSection />
 
-        <OpeningHours pathPrefix="vaerftet" />
+        <OpeningHours pathPrefix='zhLGIqf2J0aXtotDOJYqLXodJTC2/vaerftet' />
 
         <BarCard />
       </main>

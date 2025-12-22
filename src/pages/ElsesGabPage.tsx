@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Instagram } from 'lucide-react';
 import OpeningHours from '@/components/elses-gab/OpeningHours';
 import MenuSection from '@/components/elses-gab/MenuSection';
 import EventSpaceSection from '@/components/elses-gab/EventSpaceSection.tsx';
@@ -10,7 +9,7 @@ const ElsesGabPage = () => {
   return (
     <div className='min-h-screen bg-background text-foreground'>
       <Navigation />
-      <main className='pt-20'>
+      <main>
         {/* Hero Section */}
         <section className='relative h-[50vh] flex items-center justify-center'>
           <div className='absolute inset-0'>
@@ -38,7 +37,7 @@ const ElsesGabPage = () => {
         <EventSpaceSection />
 
         {/* Opening Hours */}
-        <OpeningHours pathPrefix="elsesgab" />
+        <OpeningHours pathPrefix='zhLGIqf2J0aXtotDOJYqLXodJTC2/elsesgab' />
 
         {/* Instagram Feed */}
         <InstagramFeed />
