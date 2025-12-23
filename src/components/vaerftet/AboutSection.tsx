@@ -10,7 +10,7 @@ const AboutSection = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center'>
           {/* LEFT COLUMN: Text Content */}
           <div className='order-2 lg:order-1'>
-            <h2 className='font-serif text-4xl md:text-6xl font-bold mb-8 text-primary uppercase tracking-wide'>
+            <h2 className='font-typewriter text-3xl md:text-5xl font-bold mb-8 text-primary uppercase tracking-wide'>
               Om Værftet
             </h2>
 
@@ -50,7 +50,7 @@ const AboutSection = () => {
 
               {/* Main Image */}
               <img
-                src='https://images.unsplash.com/photo-1572116469696-9a58ba6c2c16?q=80&w=1000'
+                src='/img/vaerftet.png'
                 alt='Stemning hos Værftet'
                 className='absolute inset-0 w-full h-full object-cover rounded-2xl shadow-sm z-10'
               />

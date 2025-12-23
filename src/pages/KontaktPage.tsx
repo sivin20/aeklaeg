@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import { MapPin, Mail, Instagram, Facebook, ExternalLink } from 'lucide-react';
 
 const KontaktPage = () => {
-  const address = 'Havnevej 2, 6720 Nordby, Fanø';
+  const address = 'Værftet, Havnevej 2, 6720 Nordby, Fanø';
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   // Static map image with sepia styling

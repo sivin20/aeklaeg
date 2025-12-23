@@ -50,7 +50,7 @@ const KaedekassenPage = () => {
             <img src='/logos/kaedekassen_white.svg' alt='Kædekassen logo' />
           </div>
 
-          <div className='absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce'>
+          <div className='absolute bottom-8 animate-bounce'>
             <svg
               className='w-6 h-6 text-white'
               fill='none'

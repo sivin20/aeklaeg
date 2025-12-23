@@ -24,7 +24,7 @@ const Footer = () => {
         <div className='grid grid-cols-2 md:grid-cols-12 gap-y-10 gap-x-4 md:gap-8 mb-16'>
           {/* 1. BRAND (Full width on mobile, Col 1-5 on desktop) */}
           <div className='col-span-2 md:col-span-5 space-y-4'>
-            <h3 className='font-serif text-4xl font-bold text-primary tracking-tight'>
+            <h3 className='font-typewriter text-2xl font-bold text-primary tracking-tight'>
               Æ Klæg
             </h3>
             <p className='text-muted-foreground font-sans text-sm leading-relaxed max-w-sm'>

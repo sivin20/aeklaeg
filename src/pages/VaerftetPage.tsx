@@ -5,6 +5,7 @@ import BarCard from '@/components/vaerftet/BarCard.tsx';
 import React, { useState } from 'react';
 import AboutSection from '@/components/vaerftet/AboutSection.tsx';
 import { Button } from '@/components/ui/button.tsx';
+import ReviewSection from '@/components/vaerftet/ReviewSection.tsx';
 
 const VaerftetPage = () => {
   // State to track if video is ready
@@ -63,7 +64,7 @@ const VaerftetPage = () => {
             </div>
           </div>
 
-          <div className='absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce'>
+          <div className='absolute bottom-8 animate-bounce'>
             <svg
               className='w-6 h-6 text-primary'
               fill='none'
@@ -85,6 +86,8 @@ const VaerftetPage = () => {
         <OpeningHours pathPrefix='zhLGIqf2J0aXtotDOJYqLXodJTC2/vaerftet' />
 
         <BarCard />
+
+        <ReviewSection />
       </main>
       <Footer />
     </div>
