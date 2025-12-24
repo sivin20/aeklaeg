@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button.tsx';
+
 const Vaerftet = () => {
   return (
     <section
@@ -41,11 +44,9 @@ const Vaerftet = () => {
                 specialiteter, alle lavet med omhu og de bedste ingredienser.
               </p>
               <div className='pt-4 space-y-4'>
-                <div className='inline-block px-6 py-3 bg-secondary/10 border border-secondary rounded-lg'>
-                  <p className='font-sans text-foreground font-medium'>
-                    Åben torsdag - lørdag • Reservation anbefales
-                  </p>
-                </div>
+                <Button>
+                  <Link to='/vaerftet'>Læs mere</Link>
+                </Button>
               </div>
             </div>
           </div>

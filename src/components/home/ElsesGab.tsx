@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button.tsx';
+
 const ElsesGab = () => {
   return (
     <section id='elses-gab' className='py-20 md:py-32'>
@@ -32,11 +35,9 @@ const ElsesGab = () => {
                 danner rammen omkring den hyggelige frokost, hygge i sofagruppe.
               </p>
               <div className='pt-4'>
-                <div className='inline-block px-6 py-3 bg-primary/10 border border-primary rounded-lg'>
-                  <p className='font-sans text-foreground font-medium'>
-                    Åben dagligt • Se åbningstider på vores sociale medier
-                  </p>
-                </div>
+                <Button>
+                  <Link to='/elses-gab'>Læs mere</Link>
+                </Button>
               </div>
             </div>
           </div>

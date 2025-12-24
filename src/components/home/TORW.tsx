@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button.tsx';
+
 const TORW = () => {
   return (
     <section id='torw' className='py-20 md:py-32'>
@@ -34,11 +37,9 @@ const TORW = () => {
                 ære i god service i et behageligt og afslappende miljø.
               </p>
               <div className='pt-4'>
-                <div className='inline-block px-6 py-3 bg-primary/10 border border-primary rounded-lg'>
-                  <p className='font-sans text-foreground font-medium'>
-                    Åben efter aftale • Kontakt os for besøg
-                  </p>
-                </div>
+                <Button>
+                  <Link to='/torw'>Læs mere</Link>
+                </Button>
               </div>
             </div>
           </div>

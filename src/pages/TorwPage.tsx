@@ -154,7 +154,7 @@ const TorwPage = () => {
                   <span className='text-primary text-xs font-bold tracking-widest uppercase mb-2 block'>
                     Grooming & Pleje
                   </span>
-                  <h3 className='font-serif text-3xl md:text-4xl mb-6 text-card-foreground'>
+                  <h3 className='font-typewriter text-xl md:text-2xl mb-6 text-card-foreground'>
                     Til manden med og uden skæg
                   </h3>
                   <p className='text-muted-foreground mb-8'>
@@ -200,7 +200,7 @@ const TorwPage = () => {
         {/* VISIT BANNER */}
         <section className='py-20 bg-primary/5'>
           <div className='container mx-auto px-6 text-center'>
-            <h2 className='font-serif text-3xl md:text-5xl text-foreground mb-6'>
+            <h2 className='font-typewriter text-2xl md:text-4xl text-foreground mb-6'>
               Kig forbi butikken
             </h2>
             <p className='text-muted-foreground text-lg max-w-2xl mx-auto mb-10'>
