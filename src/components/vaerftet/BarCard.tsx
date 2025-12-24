@@ -249,9 +249,13 @@ const BarCard = () => {
             <div className='space-y-10'>
               {/* Fanø Bryghus List */}
               <div>
-                <h3 className='font-serif text-xl text-foreground mb-3 flex items-center gap-2'>
-                  <Beer className='w-5 h-5 text-primary' />
+                <h3 className='font-serif text-3xl text-foreground mb-3 flex items-center gap-2'>
                   Fanø Bryghus
+                  <img
+                    src='/logos/fanoe_bryghus-primary.svg'
+                    alt='Fanø Bryghus Logo'
+                    className='w-20'
+                  />
                 </h3>
                 <p className='text-muted-foreground leading-relaxed text-sm'>
                   Vi er stolte af at præsentere et stort udvalg af lokale
