@@ -164,7 +164,7 @@ const BarCard = () => {
         {/* === CARD 1: COCKTAILS === */}
         <div className='bg-card border border-border/50 p-8 md:p-12 rounded-sm shadow-sm relative overflow-hidden'>
           <div className='text-center mb-12'>
-            <h2 className='font-serif text-4xl md:text-5xl text-primary mb-4'>
+            <h2 className='font-typewriter text-3xl md:text-4xl text-primary mb-4'>
               Cocktailkort
             </h2>
             <div className='h-1 w-24 bg-primary/30 mx-auto rounded-full' />
@@ -240,7 +240,7 @@ const BarCard = () => {
           {/* RIGHT SIDE: SELECTION LIST */}
           <div className='p-8 md:p-12 flex flex-col justify-center'>
             <div className='text-left mb-8'>
-              <h2 className='font-serif text-3xl md:text-4xl text-primary mb-4'>
+              <h2 className='font-typewriter text-2xl md:text-3xl text-primary mb-4'>
                 Øl & Vand
               </h2>
               <div className='h-1 w-16 bg-primary/30 rounded-full' />

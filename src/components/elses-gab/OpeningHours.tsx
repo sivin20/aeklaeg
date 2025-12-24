@@ -113,7 +113,7 @@ const OpeningHours = ({ pathPrefix }: OpeningHoursProps) => {
         <div className='max-w-3xl mx-auto'>
           <div className='flex items-center gap-3 mb-8 justify-center'>
             <Clock className='w-8 h-8 text-primary' />
-            <h2 className='font-serif text-3xl md:text-4xl font-bold text-foreground'>
+            <h2 className='font-typewriter text-2xl md:text-3xl font-bold text-foreground'>
               Åbningstider
             </h2>
             {user && !isEditing && (

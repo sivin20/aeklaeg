@@ -14,7 +14,7 @@ const Index = () => {
       <main>
         <Hero />
         <KaedekassenSection />
-        <Story />
+        {/*<Story />*/}
         <ElsesGab />
         <Vaerftet />
         <TORW />
