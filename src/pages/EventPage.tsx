@@ -169,7 +169,7 @@ const EventsPage = () => {
                 {/* Description */}
                 {event.editorial && (
                   <div className='bg-card/30 rounded-xl p-0 md:p-4'>
-                    <h3 className='font-serif text-2xl font-bold mb-4 text-primary'>
+                    <h3 className='font-typewriter text-xl font-bold mb-4 text-primary'>
                       Om Eventet
                     </h3>
                     <div
@@ -189,7 +189,7 @@ const EventsPage = () => {
               <div className='lg:col-span-5 flex flex-col gap-8 h-full'>
                 {/* Header Info */}
                 <div>
-                  <h1 className='text-3xl md:text-5xl font-serif font-bold text-foreground mb-4 leading-tight'>
+                  <h1 className='text-2xl md:text-4xl font-typewriter font-bold text-foreground mb-4 leading-tight'>
                     {event.name}
                   </h1>
 
@@ -240,7 +240,7 @@ const EventsPage = () => {
                   {/* Decorative background accent */}
                   <div className='absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 pointer-events-none'></div>
 
-                  <h3 className='font-serif text-xl font-semibold mb-6 text-foreground flex items-center gap-2'>
+                  <h3 className='font-typewriter text-lg font-semibold mb-6 text-foreground flex items-center gap-2'>
                     <Ticket className='w-5 h-5 text-primary' />
                     Billetter & Tilvalg
                   </h3>

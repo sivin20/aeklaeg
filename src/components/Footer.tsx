@@ -25,7 +25,7 @@ const Footer = () => {
           {/* 1. BRAND (Full width on mobile, Col 1-5 on desktop) */}
           <div className='col-span-2 md:col-span-5 space-y-4'>
             <h3 className='font-typewriter text-2xl font-bold text-primary tracking-tight'>
-              Æ Klæg
+              <Link to='/'>Æ Klæg</Link>
             </h3>
             <p className='text-muted-foreground font-sans text-sm leading-relaxed max-w-sm'>
               Vi skaber autentiske oplevelser i hjertet af Nordby. Kom forbi til
