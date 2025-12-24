@@ -43,7 +43,11 @@ const KaedekassenSection = () => {
               className='bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-lg px-8'
             >
               Se alle events
-              <ArrowRight className='w-5 h-5' />
+              <img
+                src='/anchor-text.svg'
+                alt='Anchor Right'
+                className='w-4 h-4 rotate-[270deg] transition-transform duration-300 group-hover:translate-x-1'
+              />
             </Button>
           </Link>
         </div>

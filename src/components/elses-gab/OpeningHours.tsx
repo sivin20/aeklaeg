@@ -97,7 +97,10 @@ const OpeningHours = ({ pathPrefix }: OpeningHoursProps) => {
 
   if (isLoading) {
     return (
-      <section className='py-16 md:py-24 bg-card' id='opening-hours'>
+      <section
+        className='py-16 md:py-24 bg-card scroll-mt-32'
+        id='opening-hours'
+      >
         <div className='container mx-auto px-4'>
           <div className='max-w-3xl mx-auto text-center'>
             <Clock className='w-8 h-8 text-primary mx-auto animate-pulse' />
@@ -108,7 +111,7 @@ const OpeningHours = ({ pathPrefix }: OpeningHoursProps) => {
   }
 
   return (
-    <section className='py-16 md:py-24 bg-card' id='opening-hours'>
+    <section className='py-16 md:py-24 bg-card scroll-mt-32' id='opening-hours'>
       <div className='container mx-auto px-4'>
         <div className='max-w-3xl mx-auto'>
           <div className='flex items-center gap-3 mb-8 justify-center'>

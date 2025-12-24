@@ -19,7 +19,7 @@ const EventSpaceSection = () => {
   };
 
   return (
-    <section className='py-12 md:py-24 bg-background'>
+    <section className='py-12 md:py-24 bg-background' id='event-space'>
       <div className='container mx-auto px-4'>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
           {/* --- ROW 1 --- */}

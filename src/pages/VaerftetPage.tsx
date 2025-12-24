@@ -2,15 +2,31 @@ import Navigation from '@/components/Navigation.tsx';
 import OpeningHours from '@/components/elses-gab/OpeningHours.tsx';
 import Footer from '@/components/Footer.tsx';
 import BarCard from '@/components/vaerftet/BarCard.tsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AboutSection from '@/components/vaerftet/AboutSection.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import ReviewSection from '@/components/vaerftet/ReviewSection.tsx';
-import { Anchor, AnchorIcon, LucideAnchor } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const VaerftetPage = () => {
   // State to track if video is ready
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // We use a tiny timeout to ensure the element is rendered in the DOM before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If no hash, scroll to top (standard behavior)
+      window.scrollTo(0, 0);
+    }
+  }, [hash]);
 
   return (
     <div className='min-h-screen bg-background text-foreground'>

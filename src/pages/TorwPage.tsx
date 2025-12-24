@@ -96,7 +96,10 @@ const TorwPage = () => {
         </section>
 
         {/* BRANDS GRID */}
-        <section className='py-20 bg-muted/30 border-y border-border'>
+        <section
+          className='py-20 bg-muted/30 border-y border-border scroll-mt-32'
+          id='brands'
+        >
           <div className='container mx-auto px-6'>
             <div className='text-center mb-16'>
               <h2 className='font-typewriter text-2xl md:text-3xl text-foreground mb-4'>
