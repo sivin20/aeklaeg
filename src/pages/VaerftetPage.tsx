@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import AboutSection from '@/components/vaerftet/AboutSection.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import ReviewSection from '@/components/vaerftet/ReviewSection.tsx';
+import { Anchor, AnchorIcon, LucideAnchor } from 'lucide-react';
 
 const VaerftetPage = () => {
   // State to track if video is ready
@@ -65,19 +66,7 @@ const VaerftetPage = () => {
           </div>
 
           <div className='absolute bottom-8 animate-bounce'>
-            <svg
-              className='w-6 h-6 text-primary'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M19 14l-7 7m0 0l-7-7m7 7V3'
-              />
-            </svg>
+            <img src='/anchor.svg' className='w-8' alt='Anchor' />
           </div>
         </section>
 

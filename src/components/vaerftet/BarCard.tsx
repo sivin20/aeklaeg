@@ -159,7 +159,7 @@ const BarCard = () => {
   ];
 
   return (
-    <section className='py-20 md:py-24 bg-background'>
+    <section className='py-20 md:py-24 bg-background' id='bar-card'>
       <div className='container mx-auto px-4 max-w-5xl space-y-12'>
         {/* === CARD 1: COCKTAILS === */}
         <div className='bg-card border border-border/50 p-8 md:p-12 rounded-sm shadow-sm relative overflow-hidden'>

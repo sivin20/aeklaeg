@@ -15,7 +15,7 @@ const KaedekassenSection = () => {
       <div className='container mx-auto px-4'>
         <div className='text-center mb-16'>
           <div className='flex items-center justify-center gap-4 mb-6'>
-            <h2 className='font-serif text-4xl md:text-6xl font-bold text-foreground'>
+            <h2 className='font-typewriter text-3xl md:text-5xl font-bold text-primary'>
               Kædekassen
             </h2>
             <img

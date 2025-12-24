@@ -62,7 +62,7 @@ const KontaktPage = () => {
         <section className='py-20 md:py-32'>
           <div className='container mx-auto px-4'>
             <div className='max-w-4xl mx-auto text-center'>
-              <h1 className='font-serif text-5xl md:text-7xl font-bold mb-6 text-primary'>
+              <h1 className='font-typewriter text-4xl md:text-6xl font-bold mb-6 text-primary'>
                 Kontakt
               </h1>
               <p className='font-sans text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-16'>
@@ -75,7 +75,7 @@ const KontaktPage = () => {
                 {/* Address Card */}
                 <div className='bg-card border border-border rounded-xl p-8 text-left hover:border-primary transition-colors group'>
                   <MapPin className='h-10 w-10 text-primary mb-6 group-hover:scale-110 transition-transform' />
-                  <h2 className='font-serif text-2xl font-bold mb-4 text-foreground'>
+                  <h2 className='font-typewriter text-xl font-bold mb-4 text-foreground'>
                     Adresse
                   </h2>
                   <p className='font-sans text-muted-foreground leading-relaxed mb-6'>
@@ -98,7 +98,7 @@ const KontaktPage = () => {
                 {/* Email Card */}
                 <div className='bg-card border border-border rounded-xl p-8 text-left hover:border-primary transition-colors group'>
                   <Mail className='h-10 w-10 text-primary mb-6 group-hover:scale-110 transition-transform' />
-                  <h2 className='font-serif text-2xl font-bold mb-4 text-foreground'>
+                  <h2 className='font-typewriter text-xl font-bold mb-4 text-foreground'>
                     Email
                   </h2>
                   <p className='font-sans text-muted-foreground leading-relaxed mb-6'>
@@ -117,7 +117,7 @@ const KontaktPage = () => {
 
               {/* Social Links */}
               <div className='bg-card border border-border rounded-xl p-8'>
-                <h2 className='font-serif text-2xl font-bold mb-6 text-foreground'>
+                <h2 className='font-typewriter text-xl font-bold mb-6 text-foreground'>
                   Følg os
                 </h2>
                 <p className='font-sans text-muted-foreground mb-8'>

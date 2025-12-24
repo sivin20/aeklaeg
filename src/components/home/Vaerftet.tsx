@@ -18,7 +18,7 @@ const Vaerftet = () => {
           </div>
           <div>
             <div className='flex items-center gap-4 mb-6'>
-              <h2 className='font-serif text-4xl md:text-6xl font-bold text-primary'>
+              <h2 className='font-typewriter text-3xl md:text-5xl font-bold text-primary'>
                 Værftet
               </h2>
               <img

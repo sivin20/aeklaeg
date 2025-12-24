@@ -5,7 +5,7 @@ const TORW = () => {
         <div className='grid md:grid-cols-2 gap-12 items-center'>
           <div className='order-2 md:order-1'>
             <div className='flex items-center gap-4 mb-6'>
-              <h2 className='font-serif text-4xl md:text-6xl font-bold text-primary'>
+              <h2 className='font-typewriter text-3xl md:text-5xl font-bold text-primary'>
                 TØRW
               </h2>
               <img
