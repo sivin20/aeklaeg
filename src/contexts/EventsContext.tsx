@@ -39,7 +39,7 @@ async function fetchUpcomingEvents(limit = 20): Promise<BillettoEvent[]> {
 
 async function fetchPreviousEvents(limit = 30): Promise<BillettoEvent[]> {
   const res = await fetch(
-    `/api/billetto?endpoint=organiser/events&category=music&starts_before=${new Date().toISOString()}&limit=${limit}&expand=data.gallery_items`,
+    `/api/billetto?endpoint=organiser/events&category=music&state=completed&starts_before=${new Date().toISOString()}&limit=${limit}&expand=data.gallery_items`,
   );
 
   if (!res.ok) {
