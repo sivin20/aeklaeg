@@ -1,11 +1,11 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/home/Hero.tsx';
 import KaedekassenSection from '@/components/home/KaedekassenSection.tsx';
-import Story from '@/components/home/Story.tsx';
 import ElsesGab from '@/components/home/ElsesGab.tsx';
 import Vaerftet from '@/components/home/Vaerftet.tsx';
 import TORW from '@/components/home/TORW.tsx';
 import Footer from '@/components/Footer';
+import InteractiveMap from '@/components/home/InteractiveMap.tsx';
 
 const Index = () => {
   return (
@@ -13,6 +13,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+        <InteractiveMap />
         <KaedekassenSection />
         {/*<Story />*/}
         <ElsesGab />
