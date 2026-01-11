@@ -4,9 +4,9 @@ import { Users, Utensils, Armchair, Beer, Phone, Bath } from 'lucide-react'; // 
 
 const EventSpaceSection = () => {
   const capacities = [
-    { label: 'Personer', count: 60, icon: Users },
-    { label: 'Spiseborde', count: 7, icon: Utensils },
-    { label: 'Stole', count: 80, icon: Armchair },
+    { label: 'Personer', count: 30, icon: Users },
+    { label: 'Spiseborde', count: 5, icon: Utensils },
+    { label: 'Stole', count: 30, icon: Armchair },
     { label: 'Ølhaner', count: 3, icon: Beer },
     { label: 'Badeværelse', count: 1, icon: Bath },
   ];
