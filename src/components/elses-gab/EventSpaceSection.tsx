@@ -89,7 +89,7 @@ const EventSpaceSection = () => {
               </p>
 
               <div className='flex flex-col sm:flex-row gap-4 items-start sm:items-center'>
-                <a href='tel:+4512345678' className='w-full sm:w-auto'>
+                <a href='tel:+4591522127' className='w-full sm:w-auto'>
                   <Button className='w-full gap-2'>
                     <Phone className='w-4 h-4' />
                     Ring til Else
@@ -99,7 +99,7 @@ const EventSpaceSection = () => {
                   <span className='text-xs text-muted-foreground uppercase tracking-wider'>
                     Telefon
                   </span>
-                  <span className='font-serif text-lg'>+45 12 34 56 78</span>
+                  <span className='font-serif text-lg'>+45 9152 2127</span>
                 </div>
               </div>
             </div>
