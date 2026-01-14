@@ -13,7 +13,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        {/*<InteractiveMap />*/}
+        <InteractiveMap />
         <KaedekassenSection />
         {/*<Story />*/}
         <ElsesGab />
