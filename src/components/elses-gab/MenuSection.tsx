@@ -80,7 +80,7 @@ const defaultMenu: MenuData = {
   ],
 };
 
-// --- Sortable Components (Kept mostly the same) ---
+// --- Sortable Components ---
 
 const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
   const {
@@ -140,9 +140,16 @@ const SortableItemRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
           <div className='pl-2 bg-background z-10 shrink-0'>
             {isEditing ? (
               <Input
-                value={item.price}
-                onChange={(e) => onUpdate('price', e.target.value)}
-                className='w-20 text-right'
+                type='number'
+                // Strip everything that isn't a number for the input view
+                value={item.price.replace(/[^0-9]/g, '')}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  // Automatically append ',-' when saving
+                  onUpdate('price', val ? `${val},-` : '');
+                }}
+                className='w-24 text-right font-serif font-semibold'
+                placeholder='0'
               />
             ) : (
               <span className='font-sans font-semibold text-lg text-primary'>
@@ -510,7 +517,8 @@ const MenuSection = () => {
       id: generateId(),
       name: 'Ny vare',
       description: 'Beskrivelse',
-      price: '0 kr',
+      // Default to "0,-" format
+      price: '0,-',
     });
     updateLocalMenu(newMenu);
   };

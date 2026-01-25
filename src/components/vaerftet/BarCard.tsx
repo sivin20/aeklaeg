@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Beer,
-  Coffee,
-  Droplets,
   Edit2,
   Save,
   X,
@@ -116,10 +113,16 @@ const SortableCocktailRow = ({ item, isEditing, onDelete, onUpdate }: any) => {
           <div className='relative z-10 bg-card pl-4'>
             {isEditing ? (
               <Input
-                value={item.price}
-                onChange={(e) => onUpdate('price', e.target.value)}
-                className='font-serif font-semibold w-20 text-right'
-                placeholder='Pris'
+                type='number'
+                // Regex strips non-numbers so the input only shows "110" even if data is "110,-"
+                value={item.price.replace(/[^0-9]/g, '')}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  // Automatically append ',-' if there is a value
+                  onUpdate('price', val ? `${val},-` : '');
+                }}
+                className='font-serif font-semibold w-24 text-right'
+                placeholder='0'
               />
             ) : (
               <span className='font-serif text-xl text-primary font-semibold'>
@@ -189,7 +192,6 @@ const BarCard = () => {
           if (data && data.cocktails) {
             setLocalData({ cocktails: data.cocktails });
           } else {
-            // Empty state if DB is empty
             setLocalData({ cocktails: [] });
           }
         }
@@ -230,7 +232,7 @@ const BarCard = () => {
   };
 
   const handleCancel = () => {
-    setIsEditing(false); // Triggers re-fetch from DB via useEffect
+    setIsEditing(false);
   };
 
   // Cocktail Logic
@@ -289,7 +291,6 @@ const BarCard = () => {
     );
   }
 
-  // Fallback only if localData is truly null (shouldn't happen with above logic unless error)
   if (!localData)
     return (
       <div className='text-center py-20 text-muted-foreground'>
