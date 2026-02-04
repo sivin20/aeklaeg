@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { EventsProvider } from '@/contexts/EventsContext';
-import Index from './pages/Index';
+import Home from './pages/Home.tsx';
 import NotFound from './pages/NotFound';
 import ElsesGabPage from './pages/ElsesGabPage';
 import TorwPage from './pages/TorwPage';
@@ -26,7 +26,7 @@ const App = () => (
           <BrowserRouter>
             <ScrollToTop />
             <Routes>
-              <Route path='/' element={<Index />} />
+              <Route path='/' element={<Home />} />
               <Route path='/elses-gab' element={<ElsesGabPage />} />
               <Route path='/torw' element={<TorwPage />} />
               <Route path='/kaedekassen' element={<KaedekassenPage />} />

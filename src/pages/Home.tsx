@@ -7,7 +7,7 @@ import TORW from '@/components/home/TORW.tsx';
 import Footer from '@/components/Footer';
 import InteractiveMap from '@/components/home/InteractiveMap.tsx';
 
-const Index = () => {
+const Home = () => {
   return (
     <div className='min-h-screen bg-background text-foreground'>
       <Navigation />
@@ -25,4 +25,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;

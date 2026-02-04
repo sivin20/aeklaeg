@@ -4,6 +4,7 @@ import OpeningHours from '@/components/elses-gab/OpeningHours';
 import MenuSection from '@/components/elses-gab/MenuSection';
 import EventSpaceSection from '@/components/elses-gab/EventSpaceSection.tsx';
 import InstagramFeed from '@/components/elses-gab/InstagramFeed.tsx';
+import ElsesGabReviews from '@/components/elses-gab/ElsesGabReviews.tsx';
 
 const ElsesGabPage = () => {
   return (
@@ -39,6 +40,7 @@ const ElsesGabPage = () => {
         {/* Opening Hours */}
         <OpeningHours pathPrefix='zhLGIqf2J0aXtotDOJYqLXodJTC2/elsesgab' />
 
+        <ElsesGabReviews />
         {/* Instagram Feed */}
         <InstagramFeed />
       </main>
