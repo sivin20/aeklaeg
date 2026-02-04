@@ -24,10 +24,11 @@ const CAMERA_POINTS: {
   type: MarkerType;
   image: string;
 }[] = [
+  // VÆRFTET
   {
     id: 1,
     position: [2, 1.5, 0],
-    label: 'Udsigt over Værftet',
+    label: 'Værftet Bar',
     type: 'image',
     image:
       'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
@@ -35,7 +36,7 @@ const CAMERA_POINTS: {
   {
     id: 2,
     position: [-3, 1.5, 2],
-    label: 'Hyggehjørnet',
+    label: 'Værftet Upper 1',
     type: 'image',
     image:
       'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1000&auto=format&fit=crop',
@@ -43,15 +44,7 @@ const CAMERA_POINTS: {
   {
     id: 3,
     position: [0.5, 1.5, 4],
-    label: 'Udsigt over Værftet',
-    type: 'handicap',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    id: 5,
-    position: [0.5, 1.5, -18],
-    label: 'Udsigt over Værftet',
+    label: 'Værftet Indgang 1',
     type: 'handicap',
     image:
       'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
@@ -59,29 +52,48 @@ const CAMERA_POINTS: {
   {
     id: 6,
     position: [0.5, 1.5, -10],
-    label: 'Udsigt over Værftet',
+    label: 'Værftet Indgang 2',
+    type: 'handicap',
+    image:
+      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+  },
+  {
+    id: 8,
+    position: [4, 1.5, 0],
+    label: 'Værftet Toilet 1',
+    type: 'toilet',
+    image:
+      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+  },
+
+  {
+    id: 9,
+    position: [-4.5, 1.5, -11],
+    label: 'Værftet Toilet 2',
+    type: 'toilet',
+    image:
+      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+  },
+
+  // ELSES GAB
+  {
+    id: 5,
+    position: [0.5, 1.5, -18],
+    label: 'Elses Gab Indgang 1',
     type: 'handicap',
     image:
       'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: 7,
-    position: [4, 1.5, 0],
-    label: 'Udsigt over Værftet',
-    type: 'toilet',
+    position: [8, 1.5, -25.5],
+    label: 'Elses Gab Indgang 2',
+    type: 'handicap',
     image:
       'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
   },
   {
-    id: 8,
-    position: [-4.5, 1.5, -11],
-    label: 'Udsigt over Værftet',
-    type: 'toilet',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    id: 9,
+    id: 10,
     position: [7, 1.5, -17],
     label: 'Udsigt over Værftet',
     type: 'toilet',

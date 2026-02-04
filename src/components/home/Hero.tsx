@@ -37,7 +37,7 @@ const Hero = () => {
         <img
           src='/logos/aeklaeg_primary.svg'
           alt=''
-          className='w-[85%] max-w-[500px] md:max-w-none md:w-auto md:h-[75vh] opacity-[0.75] transition-transform duration-100 ease-out'
+          className='mb-8 w-[85%] max-w-[500px] md:max-w-none md:w-auto md:h-[75vh] opacity-[0.75] transition-transform duration-100 ease-out'
           style={{
             transform: `rotate(${rotation}deg) scale(${scale})`,
           }}
@@ -46,7 +46,7 @@ const Hero = () => {
 
       <div className='relative z-10 container mx-auto px-4 text-center animate-fade-in'>
         <div className='max-w-2xl mx-auto mb-12 space-y-6'>
-          <div className='grid grid-cols-2 gap-4 mt-8 text-sm md:text-base'>
+          <div className='grid grid-cols-2 gap-4 text-sm md:text-base'>
             <Link to='/vaerftet'>
               <div className='group p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-border hover:border-primary transition-all duration-300 flex items-center justify-center sm:justify-between gap-3 hover:bg-card/70'>
                 <div className='items-center sm:items-start flex flex-col'>
@@ -111,7 +111,11 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className='absolute bottom-8 animate-bounce'>
+      <div
+        className={`absolute bottom-20 transition-opacity ${
+          scrollY > 150 ? 'opacity-0 pointer-events-none' : 'animate-bounce'
+        }`}
+      >
         <img src='/anchor.svg' className='w-8' alt='Anchor' />
       </div>
     </section>
