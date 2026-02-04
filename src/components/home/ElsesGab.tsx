@@ -39,7 +39,7 @@ const ElsesGab = () => {
 
             {/* --- IMPROVED CTA --- */}
             <div className='flex flex-col sm:flex-row gap-4 pt-2'>
-              <Link to='/elses-gab'>
+              <Link to='/elses-gab#menu'>
                 <Button className='w-full sm:w-auto h-12 px-8 text-base gap-2 group'>
                   Se Menukort
                   <img

@@ -688,7 +688,10 @@ const MenuSection = () => {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      <section className='py-16 md:py-24 bg-background text-foreground'>
+      <section
+        className='py-16 md:py-24 bg-background text-foreground'
+        id='menu'
+      >
         <div className='container mx-auto px-4'>
           {/* Header */}
           <div className='flex items-center justify-center gap-3 mb-16'>
