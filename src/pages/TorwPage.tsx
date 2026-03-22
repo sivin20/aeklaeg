@@ -221,6 +221,9 @@ const TorwPage = () => {
                   <p className='text-sm text-muted-foreground'>
                     Alle dage: 11.00 - 16.00
                   </p>
+                  <p className='text-sm italic text-muted-foreground'>
+                    OBS: Lukket søndag-onsdag grundet ombygning
+                  </p>
                 </div>
               </div>
 
