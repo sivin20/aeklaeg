@@ -26,44 +26,60 @@ const CAMERA_POINTS: {
 }[] = [
   // VÆRFTET
   {
-    id: 1,
-    position: [2, 1.5, 0],
-    label: 'Værftet Bar',
-    type: 'image',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
     id: 2,
-    position: [-3, 1.5, 2],
+    position: [-2, 1.5, 3],
     label: 'Værftet Upper 1',
     type: 'image',
-    image:
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/vaerftet_upper_1.jpg',
+  },
+  {
+    id: 21,
+    position: [-2, 1.5, 0],
+    label: 'Værftet Upper 2',
+    type: 'image',
+    image: '/public/img/map_imgs/vaerftet_upper_2.jpg',
+  },
+  {
+    id: 22,
+    position: [0, 1.5, -3],
+    label: 'Værftet Upper 3',
+    type: 'image',
+    image: '/public/img/map_imgs/vaerftet_upper_3.jpg',
+  },
+  {
+    id: 23,
+    position: [2, 1.5, -6],
+    label: 'Værftet Lower 1',
+    type: 'image',
+    image: '/public/img/map_imgs/vaerftet_lower_1.jpg',
+  },
+  {
+    id: 24,
+    position: [0, 1.5, -8],
+    label: 'Værftet lower 2',
+    type: 'image',
+    image: '/public/img/map_imgs/vaerftet_lower_2.jpg',
   },
   {
     id: 3,
     position: [0.5, 1.5, 4],
     label: 'Værftet Indgang 1',
     type: 'handicap',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/handicap/vaerftet_entrance_1.jpg',
   },
   {
     id: 6,
     position: [0.5, 1.5, -10],
     label: 'Værftet Indgang 2',
     type: 'handicap',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/handicap/vaerftet_entrance_2.jpg',
   },
   {
     id: 8,
     position: [4, 1.5, 0],
     label: 'Værftet Toilet 1',
     type: 'toilet',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/toilets/vaerftet_toilet_1.jpg',
   },
 
   {
@@ -71,8 +87,7 @@ const CAMERA_POINTS: {
     position: [-4.5, 1.5, -11],
     label: 'Værftet Toilet 2',
     type: 'toilet',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/toilets/vaerftet_toilet_2.jpg',
   },
 
   // ELSES GAB
@@ -81,24 +96,21 @@ const CAMERA_POINTS: {
     position: [0.5, 1.5, -18],
     label: 'Elses Gab Indgang 1',
     type: 'handicap',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/handicap/elses_gab_entrance_1.jpg',
   },
   {
     id: 7,
     position: [8, 1.5, -25.5],
     label: 'Elses Gab Indgang 2',
     type: 'handicap',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/handicap/elses_gab_entrance_2.jpg',
   },
   {
     id: 10,
     position: [7, 1.5, -17],
-    label: 'Udsigt over Værftet',
+    label: 'Elses Gab Toilet',
     type: 'toilet',
-    image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
+    image: '/public/img/map_imgs/toilets/elses_gab_toilet.jpg',
   },
 ];
 
