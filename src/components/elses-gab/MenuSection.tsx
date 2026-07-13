@@ -674,10 +674,10 @@ const MenuSection = () => {
                         onDragEnd={(e) => handleItemDragEnd(e, subIndex)}
                       >
                         <SortableContext
-                          items={subcategory.items.map((i) => i.id)}
+                          items={subcategory.items?.map((i) => i.id)}
                           strategy={verticalListSortingStrategy}
                         >
-                          {subcategory.items.map((item) => (
+                          {subcategory.items?.map((item) => (
                             <SortableItemRow
                               key={item.id}
                               item={item}
