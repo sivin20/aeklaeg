@@ -154,13 +154,13 @@ const EventSpaceSection = () => {
             )}
 
             <h2 className='font-typewriter text-3xl lg:text-4xl italic leading-tight text-card-foreground'>
-              Dit event,
+              Plads til
               <br />
-              Vores lokaler
+              hele selskabet
             </h2>
             <div className='pt-2 text-primary'>
               <p>
-                <i>Vi skaber rammerne for din fest</i>
+                <i>Reservér et bord – vi sørger for hyggen</i>
               </p>
             </div>
           </div>
@@ -222,11 +222,11 @@ const EventSpaceSection = () => {
             {/* Bottom Section: "Call Else" Box */}
             <div className='mt-8 bg-muted/30 rounded-xl p-6 border border-border/50'>
               <h4 className='font-typewriter text-xl mb-2 text-card-foreground'>
-                Book bord eller lokale
+                Book et bord
               </h4>
               <p className='text-muted-foreground text-sm mb-6 leading-relaxed'>
-                Uanset om du vil booke hele lokalet til fest, eller blot
-                reservere et bord til aftenen, så giv Else et kald.
+                Vil du sikre jer en plads – til to eller til hele selskabet –
+                så giv Else et kald og reservér et bord.
               </p>
 
               <div className='flex flex-col sm:flex-row gap-4 items-start sm:items-center'>
