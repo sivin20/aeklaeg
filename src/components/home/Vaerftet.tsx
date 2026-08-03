@@ -15,7 +15,7 @@ const Vaerftet = () => {
             {/* Note: I added order-classes to ensure image is always where you want it on mobile vs desktop */}
             <div className='relative aspect-[4/5] rounded-sm overflow-hidden shadow-2xl group'>
               <img
-                src='/img/vaerftet.png'
+                src='/img/vaerftet.webp'
                 alt='Værftet Cocktailbar'
                 className='object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000 ease-out'
               />

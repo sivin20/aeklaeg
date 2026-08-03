@@ -7,7 +7,7 @@ const BeerCard = () => {
       {/* LEFT SIDE: IMAGE SPLASH WITH TEXT OVERLAY */}
       <div className='relative h-96 md:h-full min-h-[400px] group'>
         <img
-          src='/img/vaerftet_oel.jpg'
+          src='/img/vaerftet_oel.webp'
           alt='Værftet Beer'
           className='absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
         />

@@ -9,25 +9,25 @@ const TorwPage = () => {
       name: 'PIKE BROTHERS',
       description:
         'Autentisk workwear inspireret af 1930-1960. Slidstærkt tøj produceret på vintage shuttlevæve.',
-      image: '/img/pikebrothers.png',
+      image: '/img/pikebrothers.webp',
     },
     {
       name: 'STETSON',
       description:
         'Det ikoniske amerikanske hattemærke. Kvalitetshatte med historie.',
-      image: '/img/stetson.png',
+      image: '/img/stetson.webp',
     },
     {
       name: 'LAKOR',
       description:
         'Dansk design med rødder i kystkulturen. Bæredygtighed møder humor.',
-      image: '/img/lakor_outfit.png',
+      image: '/img/lakor_outfit.webp',
     },
     {
       name: 'SHEPHARD',
       description:
         'Håndlavede lædervarer fra Fyn og ægte fåreskindsprodukter fra Sverige.',
-      image: '/img/shepard.png',
+      image: '/img/shepard.webp',
     },
   ];
 
@@ -41,7 +41,7 @@ const TorwPage = () => {
           {/* Background Image with Overlay */}
           <div className='absolute inset-0'>
             <img
-              src='/img/torw_hero.png'
+              src='/img/torw_hero.webp'
               alt='TØRW Interiør'
               className='object-cover w-full h-full'
             />
@@ -83,7 +83,7 @@ const TorwPage = () => {
               <div className='relative mt-8 md:mt-0'>
                 <div className='aspect-[4/5] overflow-hidden rounded-sm'>
                   <img
-                    src='/img/shoes.png'
+                    src='/img/shoes.webp'
                     alt='Clothing detail'
                     className='object-cover w-full h-full hover:scale-105 transition-transform duration-700'
                   />

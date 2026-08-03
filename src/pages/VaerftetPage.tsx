@@ -39,7 +39,7 @@ const VaerftetPage = () => {
                  Use a screenshot of the first frame of your video for the best effect.
             */}
             <img
-              src='/img/aeklaeg_hero.png' // Replace with your 'poster.jpg'
+              src='/img/aeklaeg_hero.webp' // Replace with your 'poster.jpg'
               alt='Værftet background'
               className='absolute inset-0 w-full h-full object-cover'
             />

@@ -102,10 +102,10 @@ const EventSpaceSection = () => {
   ] as const;
 
   const images = {
-    full_room: '/img/full_room.png',
-    taps: '/img/taps.png',
-    table: '/img/table.png',
-    outside_logo: '/img/outside_logo.png',
+    full_room: '/img/full_room.webp',
+    taps: '/img/taps.webp',
+    table: '/img/table.webp',
+    outside_logo: '/img/outside_logo.webp',
   };
 
   if (isLoading) {

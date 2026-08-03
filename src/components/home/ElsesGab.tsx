@@ -65,7 +65,7 @@ const ElsesGab = () => {
           <div className='order-1 md:order-2'>
             <div className='relative aspect-[4/5] rounded-sm overflow-hidden shadow-2xl group'>
               <img
-                src='/img/elsesgab_.JPEG'
+                src='/img/elsesgab_.webp'
                 alt='Elses Gab Café'
                 className='object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000 ease-out'
               />

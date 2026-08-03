@@ -50,7 +50,7 @@ const AboutSection = () => {
 
               {/* Main Image */}
               <img
-                src='/img/vaerftet.png'
+                src='/img/vaerftet.webp'
                 alt='Stemning hos Værftet'
                 className='absolute inset-0 w-full h-full object-cover rounded-2xl shadow-sm z-10'
               />
