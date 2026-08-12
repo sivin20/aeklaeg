@@ -65,7 +65,7 @@ const KaedekassenPage = () => {
               <p className='text-center'>Indlæser events...</p>
             ) : (
               <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12'>
-                {upcomingEvents.slice(0, 6).map((ev) => (
+                {upcomingEvents.map((ev) => (
                   <EventCard event={ev} key={ev.id} basePath='/kaedekassen' />
                 ))}
               </div>
