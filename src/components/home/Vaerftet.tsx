@@ -48,8 +48,9 @@ const Vaerftet = () => {
                 værftstil med autentiske detaljer og en varm atmosfære.
               </p>
               <p className='font-sans text-lg leading-relaxed'>
-                Her kan du nyde alt fra en klassisk Old Fashioned til vores egne
-                specialiteter, alle lavet med omhu og de bedste ingredienser.
+                Her kan du nyde alt fra vores Whiskey Why So Sour til vores
+                øvrige specialiteter, alle lavet med omhu og de bedste
+                ingredienser.
               </p>
             </div>
 
